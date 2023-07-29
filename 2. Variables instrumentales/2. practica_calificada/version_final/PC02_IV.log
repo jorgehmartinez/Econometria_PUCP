@@ -1,0 +1,685 @@
+--------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\lfigueroa\Documents\Ciencia_de_Datos\Econometría_Avanzada\PC Prácticas Calificadas\PC.02
+> \calificada_IV-2023-07-01_1.log
+  log type:  text
+ opened on:   1 Jul 2023, 23:36:13
+
+.         local today "`c(current_time)'"
+
+.         local curdir "`c(pwd)'"
+
+.         local newn = c(N) + 1
+
+. 
+. ****************************************************************************
+. 
+. use "card.dta"
+
+. 
+. * 1. Realice una descripción de las características de los individuos de la muestra. 
+. describe
+
+Contains data from card.dta
+  obs:         3,010                          
+ vars:            34                          17 Aug 1999 14:26
+--------------------------------------------------------------------------------------------------------------
+              storage   display    value
+variable name   type    format     label      variable label
+--------------------------------------------------------------------------------------------------------------
+id              int     %9.0g                 person identifier
+nearc2          byte    %9.0g                 =1 if near 2 yr college, 1966
+nearc4          byte    %9.0g                 =1 if near 4 yr college, 1966
+educ            byte    %9.0g                 years of schooling, 1976
+age             byte    %9.0g                 in years
+fatheduc        byte    %9.0g                 father's schooling
+motheduc        byte    %9.0g                 mother's schooling
+weight          float   %9.0g                 NLS sampling weight, 1976
+momdad14        byte    %9.0g                 =1 if live with mom, dad at 14
+sinmom14        byte    %9.0g                 =1 if with single mom at 14
+step14          byte    %9.0g                 =1 if with step parent at 14
+reg661          byte    %9.0g                 =1 for region 1, 1966
+reg662          byte    %9.0g                 =1 for region 2, 1966
+reg663          byte    %9.0g                 =1 for region 3, 1966
+reg664          byte    %9.0g                 =1 for region 4, 1966
+reg665          byte    %9.0g                 =1 for region 5, 1966
+reg666          byte    %9.0g                 =1 for region 6, 1966
+reg667          byte    %9.0g                 =1 for region 7, 1966
+reg668          byte    %9.0g                 =1 for region 8, 1966
+reg669          byte    %9.0g                 =1 for region 9, 1966
+south66         byte    %9.0g                 =1 if in south in 1966
+black           byte    %9.0g                 =1 if black
+smsa            byte    %9.0g                 =1 in in SMSA, 1976
+south           byte    %9.0g                 =1 if in south, 1976
+smsa66          byte    %9.0g                 =1 if in SMSA, 1966
+wage            int     %9.0g                 hourly wage in cents, 1976
+enroll          byte    %9.0g                 =1 if enrolled in school, 1976
+KWW             byte    %9.0g                 knowledge world of work score
+IQ              int     %9.0g                 IQ score
+married         byte    %9.0g                 =1 if married, 1976
+libcrd14        byte    %9.0g                 =1 if lib. card in home at 14
+exper           byte    %9.0g                 age - educ - 6
+lwage           float   %9.0g                 log(wage)
+expersq         int     %9.0g                 exper^2
+--------------------------------------------------------------------------------------------------------------
+Sorted by: 
+
+. summarize
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+          id |      3,010    2581.749    1500.539          2       5225
+      nearc2 |      3,010    .4408638    .4965731          0          1
+      nearc4 |      3,010    .6820598    .4657535          0          1
+        educ |      3,010    13.26346    2.676913          1         18
+         age |      3,010     28.1196    3.137004         24         34
+-------------+---------------------------------------------------------
+    fatheduc |      2,320    10.00345    3.720737          0         18
+    motheduc |      2,657    10.34814    3.179671          0         18
+      weight |      3,010    321185.3    170645.8      75607    1752340
+    momdad14 |      3,010    .7893688    .4078247          0          1
+    sinmom14 |      3,010    .1006645    .3009339          0          1
+-------------+---------------------------------------------------------
+      step14 |      3,010    .0388704    .1933182          0          1
+      reg661 |      3,010    .0465116    .2106253          0          1
+      reg662 |      3,010    .1607973     .367405          0          1
+      reg663 |      3,010    .1956811      .39679          0          1
+      reg664 |      3,010    .0641196    .2450066          0          1
+-------------+---------------------------------------------------------
+      reg665 |      3,010    .2083056     .406164          0          1
+      reg666 |      3,010    .0960133    .2946584          0          1
+      reg667 |      3,010    .1099668    .3129003          0          1
+      reg668 |      3,010    .0282392     .165683          0          1
+      reg669 |      3,010    .0903654    .2867522          0          1
+-------------+---------------------------------------------------------
+     south66 |      3,010    .4142857    .4926801          0          1
+       black |      3,010    .2335548    .4231624          0          1
+        smsa |      3,010    .7129568    .4524571          0          1
+       south |      3,010    .4036545    .4907113          0          1
+      smsa66 |      3,010    .6495017    .4772053          0          1
+-------------+---------------------------------------------------------
+        wage |      3,010    577.2824    262.9583        100       2404
+      enroll |      3,010    .0923588    .2895799          0          1
+         KWW |      2,963    33.54067    8.611619          4         56
+          IQ |      2,061    102.4498    15.42376         50        149
+     married |      3,003    2.271395    2.066823          1          6
+-------------+---------------------------------------------------------
+    libcrd14 |      2,997     .674341    .4686987          0          1
+       exper |      3,010    8.856146    4.141672          0         23
+       lwage |      3,010    6.261832    .4437976    4.60517   7.784889
+     expersq |      3,010    95.57907    84.61831          0        529
+
+. tabulate black 
+
+=1 if black |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |      2,307       76.64       76.64
+          1 |        703       23.36      100.00
+------------+-----------------------------------
+      Total |      3,010      100.00
+
+. tabulate married
+
+      =1 if |
+   married, |
+       1976 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |      2,144       71.40       71.40
+          2 |         14        0.47       71.86
+          3 |          3        0.10       71.96
+          4 |        155        5.16       77.12
+          5 |        102        3.40       80.52
+          6 |        585       19.48      100.00
+------------+-----------------------------------
+      Total |      3,003      100.00
+
+. tabulate enroll
+
+      =1 if |
+enrolled in |
+    school, |
+       1976 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |      2,732       90.76       90.76
+          1 |        278        9.24      100.00
+------------+-----------------------------------
+      Total |      3,010      100.00
+
+. tabulate momdad14
+
+ =1 if live |
+  with mom, |
+  dad at 14 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        634       21.06       21.06
+          1 |      2,376       78.94      100.00
+------------+-----------------------------------
+      Total |      3,010      100.00
+
+. tabulate sinmom14
+
+ =1 if with |
+ single mom |
+      at 14 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |      2,707       89.93       89.93
+          1 |        303       10.07      100.00
+------------+-----------------------------------
+      Total |      3,010      100.00
+
+. tabulate nearc4
+
+ =1 if near |
+       4 yr |
+   college, |
+       1966 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        957       31.79       31.79
+          1 |      2,053       68.21      100.00
+------------+-----------------------------------
+      Total |      3,010      100.00
+
+. 
+. 
+. * 2. Regresione usando OLS el siguiente modelo en Stata 
+. * incluyendo edad
+. reg lwage educ c.exper##c.exper age black south smsa smsa66 reg661-reg668 
+note: age omitted because of collinearity
+
+      Source |       SS           df       MS      Number of obs   =     3,010
+-------------+----------------------------------   F(15, 2994)     =     85.48
+       Model |  177.695591        15  11.8463727   Prob > F        =    0.0000
+    Residual |  414.946054     2,994  .138592536   R-squared       =    0.2998
+-------------+----------------------------------   Adj R-squared   =    0.2963
+       Total |  592.641645     3,009  .196956346   Root MSE        =    .37228
+
+---------------------------------------------------------------------------------
+          lwage |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+----------------+----------------------------------------------------------------
+           educ |   .0746933   .0034983    21.35   0.000     .0678339    .0815527
+          exper |    .084832   .0066242    12.81   0.000     .0718435    .0978205
+                |
+c.exper#c.exper |   -.002287   .0003166    -7.22   0.000    -.0029079   -.0016662
+                |
+            age |          0  (omitted)
+          black |  -.1990123   .0182483   -10.91   0.000    -.2347927   -.1632318
+          south |   -.147955   .0259799    -5.69   0.000    -.1988952   -.0970148
+           smsa |   .1363845   .0201005     6.79   0.000     .0969724    .1757967
+         smsa66 |   .0262417   .0194477     1.35   0.177    -.0118905    .0643739
+         reg661 |  -.1185698   .0388301    -3.05   0.002     -.194706   -.0424335
+         reg662 |  -.0222026   .0282575    -0.79   0.432    -.0776088    .0332036
+         reg663 |   .0259703   .0273644     0.95   0.343    -.0276846    .0796251
+         reg664 |  -.0634942   .0356803    -1.78   0.075    -.1334546    .0064662
+         reg665 |   .0094551   .0361174     0.26   0.794    -.0613623    .0802725
+         reg666 |   .0219476   .0400984     0.55   0.584    -.0566755    .1005708
+         reg667 |  -.0005887   .0393793    -0.01   0.988     -.077802    .0766245
+         reg668 |  -.1750058   .0463394    -3.78   0.000     -.265866   -.0841456
+          _cons |   4.739377   .0715282    66.26   0.000     4.599127    4.879626
+---------------------------------------------------------------------------------
+
+. 
+. * sin incluir edad
+. reg lwage educ c.exper##c.exper black south smsa smsa66 reg661-reg668
+
+      Source |       SS           df       MS      Number of obs   =     3,010
+-------------+----------------------------------   F(15, 2994)     =     85.48
+       Model |  177.695591        15  11.8463727   Prob > F        =    0.0000
+    Residual |  414.946054     2,994  .138592536   R-squared       =    0.2998
+-------------+----------------------------------   Adj R-squared   =    0.2963
+       Total |  592.641645     3,009  .196956346   Root MSE        =    .37228
+
+---------------------------------------------------------------------------------
+          lwage |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+----------------+----------------------------------------------------------------
+           educ |   .0746933   .0034983    21.35   0.000     .0678339    .0815527
+          exper |    .084832   .0066242    12.81   0.000     .0718435    .0978205
+                |
+c.exper#c.exper |   -.002287   .0003166    -7.22   0.000    -.0029079   -.0016662
+                |
+          black |  -.1990123   .0182483   -10.91   0.000    -.2347927   -.1632318
+          south |   -.147955   .0259799    -5.69   0.000    -.1988952   -.0970148
+           smsa |   .1363845   .0201005     6.79   0.000     .0969724    .1757967
+         smsa66 |   .0262417   .0194477     1.35   0.177    -.0118905    .0643739
+         reg661 |  -.1185698   .0388301    -3.05   0.002     -.194706   -.0424335
+         reg662 |  -.0222026   .0282575    -0.79   0.432    -.0776088    .0332036
+         reg663 |   .0259703   .0273644     0.95   0.343    -.0276846    .0796251
+         reg664 |  -.0634942   .0356803    -1.78   0.075    -.1334546    .0064662
+         reg665 |   .0094551   .0361174     0.26   0.794    -.0613623    .0802725
+         reg666 |   .0219476   .0400984     0.55   0.584    -.0566755    .1005708
+         reg667 |  -.0005887   .0393793    -0.01   0.988     -.077802    .0766245
+         reg668 |  -.1750058   .0463394    -3.78   0.000     -.265866   -.0841456
+          _cons |   4.739377   .0715282    66.26   0.000     4.599127    4.879626
+---------------------------------------------------------------------------------
+
+. 
+. 
+. * 4. Estime la ecuación de primera etapa ¿Qué debemos ver en esta regresión? ¿Qué podría decir respecto de l
+> a correlación parcial existente entre educ y nearc4?
+. reg educ nearc4 exper
+
+      Source |       SS           df       MS      Number of obs   =     3,010
+-------------+----------------------------------   F(2, 3007)      =   1168.01
+       Model |  9427.15876         2  4713.57938   Prob > F        =    0.0000
+    Residual |  12134.9213     3,007  4.03555747   R-squared       =    0.4372
+-------------+----------------------------------   Adj R-squared   =    0.4368
+       Total |  21562.0801     3,009  7.16586243   Root MSE        =    2.0089
+
+------------------------------------------------------------------------------
+        educ |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      nearc4 |   .6000438    .078779     7.62   0.000     .4455776    .7545101
+       exper |  -.4178713   .0088591   -47.17   0.000    -.4352419   -.4005007
+       _cons |   16.55492   .1044175   158.55   0.000     16.35018    16.75966
+------------------------------------------------------------------------------
+
+. corr nearc4 educ
+(obs=3,010)
+
+             |   nearc4     educ
+-------------+------------------
+      nearc4 |   1.0000
+        educ |   0.1442   1.0000
+
+
+. 
+. 
+. *5.Estime el modelo usando el estimador de Variables Instrumentales, usando nearc4 como un instrumento para 
+> la variable educ.
+. ivregress 2sls lwage (educ = nearc4)
+
+Instrumental variables (2SLS) regression          Number of obs   =      3,010
+                                                  Wald chi2(1)    =      51.20
+                                                  Prob > chi2     =     0.0000
+                                                  R-squared       =          .
+                                                  Root MSE        =     .55667
+
+------------------------------------------------------------------------------
+       lwage |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        educ |   .1880626   .0262826     7.16   0.000     .1365497    .2395756
+       _cons |   3.767472   .3487458    10.80   0.000     3.083942    4.451001
+------------------------------------------------------------------------------
+Instrumented:  educ
+Instruments:   nearc4
+
+. 
+. *6. Testee la presencia de instrumentos débiles usando
+. *i) el estadístico F
+. estat firststage
+
+  First-stage regression summary statistics
+  --------------------------------------------------------------------------
+               |            Adjusted      Partial
+      Variable |   R-sq.       R-sq.        R-sq.     F(1,3008)   Prob > F
+  -------------+------------------------------------------------------------
+          educ |  0.0208      0.0205       0.0208       63.9119    0.0000
+  --------------------------------------------------------------------------
+
+
+  Minimum eigenvalue statistic = 63.9119     
+
+  Critical Values                      # of endogenous regressors:    1
+  Ho: Instruments are weak             # of excluded instruments:     1
+  ---------------------------------------------------------------------
+                                     |    5%     10%     20%     30%
+  2SLS relative bias                 |         (not available)
+  -----------------------------------+---------------------------------
+                                     |   10%     15%     20%     25%
+  2SLS Size of nominal 5% Wald test  |  16.38    8.96    6.66    5.53
+  LIML Size of nominal 5% Wald test  |  16.38    8.96    6.66    5.53
+  ---------------------------------------------------------------------
+
+
+. * ii) el estadístico de Cragg y Donald (1993)
+. ivregress 2sls lwage (educ = nearc4)
+
+Instrumental variables (2SLS) regression          Number of obs   =      3,010
+                                                  Wald chi2(1)    =      51.20
+                                                  Prob > chi2     =     0.0000
+                                                  R-squared       =          .
+                                                  Root MSE        =     .55667
+
+------------------------------------------------------------------------------
+       lwage |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        educ |   .1880626   .0262826     7.16   0.000     .1365497    .2395756
+       _cons |   3.767472   .3487458    10.80   0.000     3.083942    4.451001
+------------------------------------------------------------------------------
+Instrumented:  educ
+Instruments:   nearc4
+
+. predict resid, residuals
+
+. regress resid nearc4
+
+      Source |       SS           df       MS      Number of obs   =     3,010
+-------------+----------------------------------   F(1, 3008)      =      0.00
+       Model |  6.8212e-13         1  6.8212e-13   Prob > F        =    1.0000
+    Residual |  932.753188     3,008  .310090821   R-squared       =    0.0000
+-------------+----------------------------------   Adj R-squared   =   -0.0003
+       Total |  932.753188     3,009  .309987766   Root MSE        =    .55686
+
+------------------------------------------------------------------------------
+       resid |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      nearc4 |   8.06e-10    .021796     0.00   1.000    -.0427366    .0427366
+       _cons |  -2.36e-09   .0180007    -0.00   1.000    -.0352949    .0352948
+------------------------------------------------------------------------------
+
+. scalar cragg_donald = _b[_cons]^2
+
+. * iii) las tablas de Stock y Yogo (2005) con respecto a la medida del test de Wald
+. ivregress 2sls lwage (educ = nearc4)
+
+Instrumental variables (2SLS) regression          Number of obs   =      3,010
+                                                  Wald chi2(1)    =      51.20
+                                                  Prob > chi2     =     0.0000
+                                                  R-squared       =          .
+                                                  Root MSE        =     .55667
+
+------------------------------------------------------------------------------
+       lwage |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        educ |   .1880626   .0262826     7.16   0.000     .1365497    .2395756
+       _cons |   3.767472   .3487458    10.80   0.000     3.083942    4.451001
+------------------------------------------------------------------------------
+Instrumented:  educ
+Instruments:   nearc4
+
+. testnl _b[educ] = 0
+
+  (1)  _b[educ] = 0
+
+               chi2(1) =       51.20
+           Prob > chi2 =        0.0000
+
+. 
+. 
+. 
+. *7. Use nearc2 con nearc4 como instrumentos para educ. Primero estime la primera etapa para educ y analice c
+> uál de los dos instrumentos está más fuertemente relacionada parcialmente con educ. Después use el estimador
+>  de IV usando por separado nearc2 y nearc4 como instrumento para educ. Luego use el de 2SLS (incluyendo ambo
+> s instrumentos). Discuta sus resultados.  Verifique que el estimador 2SLS es válido.
+. 
+. * a) Hacemos la regresión de la variable 'edu' con las variables 'nearc2' y 'nearc4'.
+. reg educ nearc2 nearc4
+
+      Source |       SS           df       MS      Number of obs   =     3,010
+-------------+----------------------------------   F(2, 3007)      =     33.39
+       Model |  468.509725         2  234.254862   Prob > F        =    0.0000
+    Residual |  21093.5703     3,007   7.0148222   R-squared       =    0.0217
+-------------+----------------------------------   Adj R-squared   =    0.0211
+       Total |  21562.0801     3,009  7.16586243   Root MSE        =    2.6486
+
+------------------------------------------------------------------------------
+        educ |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      nearc2 |   .1649667   .0979305     1.68   0.092    -.0270508    .3569843
+      nearc4 |   .8080657   .1044107     7.74   0.000     .6033421    1.012789
+       _cons |   12.63958   .0923765   136.83   0.000     12.45845    12.82071
+------------------------------------------------------------------------------
+
+. 
+. 
+. * b) Luego utilizamos el estimador IV por separado.
+. ivreg lwage (educ = nearc2)
+
+Instrumental variables (2SLS) regression
+
+      Source |       SS           df       MS      Number of obs   =     3,010
+-------------+----------------------------------   F(1, 3008)      =      7.25
+       Model | -1769.63846         1 -1769.63846   Prob > F        =    0.0071
+    Residual |   2362.2801     3,008  .785332481   R-squared       =         .
+-------------+----------------------------------   Adj R-squared   =         .
+       Total |  592.641645     3,009  .196956346   Root MSE        =    .88619
+
+------------------------------------------------------------------------------
+       lwage |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        educ |   .3432739   .1274537     2.69   0.007     .0933686    .5931791
+       _cons |   1.708834   1.690554     1.01   0.312    -1.605924    5.023592
+------------------------------------------------------------------------------
+Instrumented:  educ
+Instruments:   nearc2
+------------------------------------------------------------------------------
+
+. ivreg lwage (educ = nearc4)
+
+Instrumental variables (2SLS) regression
+
+      Source |       SS           df       MS      Number of obs   =     3,010
+-------------+----------------------------------   F(1, 3008)      =     51.17
+       Model |  -340.11155         1  -340.11155   Prob > F        =    0.0000
+    Residual |  932.753194     3,008  .310090823   R-squared       =         .
+-------------+----------------------------------   Adj R-squared   =         .
+       Total |  592.641645     3,009  .196956346   Root MSE        =    .55686
+
+------------------------------------------------------------------------------
+       lwage |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        educ |   .1880626   .0262913     7.15   0.000     .1365118    .2396135
+       _cons |   3.767472   .3488617    10.80   0.000      3.08344    4.451503
+------------------------------------------------------------------------------
+Instrumented:  educ
+Instruments:   nearc4
+------------------------------------------------------------------------------
+
+. 
+. 
+. * c) Ahora usamos el estimador IV 2SLS para ambos instrumentos.
+. ivregress 2sls lwage (educ = nearc2 nearc4), first
+
+First-stage regressions
+-----------------------
+
+                                                Number of obs     =      3,010
+                                                F(   2,   3007)   =      33.39
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.0217
+                                                Adj R-squared     =     0.0211
+                                                Root MSE          =     2.6486
+
+------------------------------------------------------------------------------
+        educ |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      nearc2 |   .1649667   .0979305     1.68   0.092    -.0270508    .3569843
+      nearc4 |   .8080657   .1044107     7.74   0.000     .6033421    1.012789
+       _cons |   12.63958   .0923765   136.83   0.000     12.45845    12.82071
+------------------------------------------------------------------------------
+
+
+Instrumental variables (2SLS) regression          Number of obs   =      3,010
+                                                  Wald chi2(1)    =      55.75
+                                                  Prob > chi2     =     0.0000
+                                                  R-squared       =          .
+                                                  Root MSE        =     .57517
+
+------------------------------------------------------------------------------
+       lwage |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        educ |   .1984133   .0265726     7.47   0.000      .146332    .2504946
+       _cons |   3.630186   .3526001    10.30   0.000     2.939102    4.321269
+------------------------------------------------------------------------------
+Instrumented:  educ
+Instruments:   nearc2 nearc4
+
+. 
+. 
+. 
+. *8. Hemos asumido hasta ahora homoscedasticidad ¿Es razonable esto?¿Qué permite el estimador de GMM que no p
+> ermite el de IV en 2 etapas bajo heterosk. Compare los resultados (del coeficiente educación) del estimador 
+> 2SLS con el del estimador GMM bajo heterocedasticidad
+. ivregress gmm lwage (educ = nearc2 nearc4), robust
+
+Instrumental variables (GMM) regression           Number of obs   =      3,010
+                                                  Wald chi2(1)    =      57.20
+                                                  Prob > chi2     =     0.0000
+                                                  R-squared       =          .
+GMM weight matrix: Robust                         Root MSE        =     .57738
+
+------------------------------------------------------------------------------
+             |               Robust
+       lwage |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+        educ |   .1996261   .0263952     7.56   0.000     .1478925    .2513597
+       _cons |   3.613634   .3500788    10.32   0.000     2.927492    4.299776
+------------------------------------------------------------------------------
+Instrumented:  educ
+Instruments:   nearc2 nearc4
+
+. 
+. 
+. *9
+. ivregress 2sls lwage black south c.exper##c.exper (educ=nearc4 nearc2), vce(robust)
+
+Instrumental variables (2SLS) regression          Number of obs   =      3,010
+                                                  Wald chi2(5)    =     405.49
+                                                  Prob > chi2     =     0.0000
+                                                  R-squared       =          .
+                                                  Root MSE        =     .49548
+
+---------------------------------------------------------------------------------
+                |               Robust
+          lwage |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+----------------+----------------------------------------------------------------
+           educ |   .2403154   .0402514     5.97   0.000      .161424    .3192067
+          black |  -.0182842   .0451119    -0.41   0.685     -.106702    .0701335
+          south |  -.0807446   .0259706    -3.11   0.002     -.131646   -.0298432
+          exper |   .1517071   .0187201     8.10   0.000     .1150163    .1883978
+                |
+c.exper#c.exper |  -.0024099   .0004516    -5.34   0.000     -.003295   -.0015247
+                |
+          _cons |   1.998076   .6951721     2.87   0.004     .6355635    3.360588
+---------------------------------------------------------------------------------
+Instrumented:  educ
+Instruments:   black south exper c.exper#c.exper nearc4 nearc2
+
+. estat overid
+
+  Test of overidentifying restrictions:
+
+  Score chi2(1)          =  1.86471  (p = 0.1721)
+
+. 
+. ivregress gmm lwage black south c.exper##c.exper (educ=nearc2 nearc4), vce(robust)
+
+Instrumental variables (GMM) regression           Number of obs   =      3,010
+                                                  Wald chi2(5)    =     411.65
+                                                  Prob > chi2     =     0.0000
+                                                  R-squared       =          .
+GMM weight matrix: Robust                         Root MSE        =     .49381
+
+---------------------------------------------------------------------------------
+                |               Robust
+          lwage |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+----------------+----------------------------------------------------------------
+           educ |   .2389806   .0401031     5.96   0.000       .16038    .3175812
+          black |  -.0216106    .044892    -0.48   0.630    -.1095973    .0663762
+          south |    -.08144   .0258847    -3.15   0.002     -.132173    -.030707
+          exper |   .1509872   .0186492     8.10   0.000     .1144355    .1875389
+                |
+c.exper#c.exper |  -.0024023   .0004501    -5.34   0.000    -.0032844   -.0015202
+                |
+          _cons |   2.021934   .6925879     2.92   0.004     .6644867    3.379381
+---------------------------------------------------------------------------------
+Instrumented:  educ
+Instruments:   black south exper c.exper#c.exper nearc2 nearc4
+
+. estat overid
+
+  Test of overidentifying restriction:
+
+  Hansen's J chi2(1) = 1.86471 (p = 0.1721)
+
+. 
+. *10
+. eststo, title("MCO"): reg lwage black south c.exper##c.exper educ, vce(robust)
+
+Linear regression                               Number of obs     =      3,010
+                                                F(5, 3004)        =     222.70
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.2651
+                                                Root MSE          =     .38076
+
+---------------------------------------------------------------------------------
+                |               Robust
+          lwage |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+----------------+----------------------------------------------------------------
+          black |  -.1780477    .017711   -10.05   0.000    -.2127745   -.1433209
+          south |   -.150492   .0153809    -9.78   0.000    -.1806501   -.1203339
+          exper |   .0851268   .0068201    12.48   0.000     .0717543    .0984993
+                |
+c.exper#c.exper |  -.0023404    .000322    -7.27   0.000    -.0029718    -.001709
+                |
+           educ |    .078233   .0036886    21.21   0.000     .0710005    .0854655
+          _cons |   4.796325   .0716322    66.96   0.000     4.655872    4.936778
+---------------------------------------------------------------------------------
+(est1 stored)
+
+. eststo, title("IV"): ivregress 2sls lwage black south c.exper##c.exper (educ = nearc2 nearc4), vce(robust)
+
+Instrumental variables (2SLS) regression          Number of obs   =      3,010
+                                                  Wald chi2(5)    =     405.49
+                                                  Prob > chi2     =     0.0000
+                                                  R-squared       =          .
+                                                  Root MSE        =     .49548
+
+---------------------------------------------------------------------------------
+                |               Robust
+          lwage |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+----------------+----------------------------------------------------------------
+           educ |   .2403154   .0402514     5.97   0.000      .161424    .3192067
+          black |  -.0182842   .0451119    -0.41   0.685     -.106702    .0701335
+          south |  -.0807446   .0259706    -3.11   0.002     -.131646   -.0298432
+          exper |   .1517071   .0187201     8.10   0.000     .1150163    .1883978
+                |
+c.exper#c.exper |  -.0024099   .0004516    -5.34   0.000     -.003295   -.0015247
+                |
+          _cons |   1.998076   .6951721     2.87   0.004     .6355635    3.360588
+---------------------------------------------------------------------------------
+Instrumented:  educ
+Instruments:   black south exper c.exper#c.exper nearc2 nearc4
+(est2 stored)
+
+. esttab, mtitle se
+
+--------------------------------------------
+                      (1)             (2)   
+                      MCO              IV   
+--------------------------------------------
+black              -0.178***      -0.0183   
+                 (0.0177)        (0.0451)   
+
+south              -0.150***      -0.0807** 
+                 (0.0154)        (0.0260)   
+
+exper              0.0851***        0.152***
+                (0.00682)        (0.0187)   
+
+c.exper#c.~r     -0.00234***     -0.00241***
+               (0.000322)      (0.000452)   
+
+educ               0.0782***        0.240***
+                (0.00369)        (0.0403)   
+
+_cons               4.796***        1.998** 
+                 (0.0716)         (0.695)   
+--------------------------------------------
+N                    3010            3010   
+--------------------------------------------
+Standard errors in parentheses
+* p<0.05, ** p<0.01, *** p<0.001
+
+. estat endogenous        
+
+  Tests of endogeneity
+  Ho: variables are exogenous
+
+  Robust score chi2(1)            =   27.594  (p = 0.0000)
+  Robust regression F(1,3003)     =  28.1526  (p = 0.0000)
+
+. 
+. 
+end of do-file
+
+. exit, clear

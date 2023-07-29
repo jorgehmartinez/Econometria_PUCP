@@ -1,0 +1,288 @@
+------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  D:\jorge\Documents\PSICOLOGÍA UNMSM\CURSOS\Diplomado PUCP\7. ECONOMETRÍA APLICADA\2. Variables instrumentales\2. practica_calificad
+> a\calificada_IV-2023-07-01_1.log
+  log type:  text
+ opened on:   1 Jul 2023, 11:45:04
+
+.         local today "`c(current_time)'"
+
+.         local curdir "`c(pwd)'"
+
+.         local newn = c(N) + 1
+
+. 
+. ****************************************************************************
+. 
+end of do-file
+
+. do "C:\Users\jorge\AppData\Local\Temp\STD4920_000000.tmp"
+
+. use "card.dta"
+
+. 
+. * 1. Realice una descripción de las características de los individuos de la muestra. 
+. 
+. describe
+
+Contains data from card.dta
+ Observations:         3,010                  
+    Variables:            34                  17 Aug 1999 14:26
+------------------------------------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------------------------------------
+id              int     %9.0g                 person identifier
+nearc2          byte    %9.0g                 =1 if near 2 yr college, 1966
+nearc4          byte    %9.0g                 =1 if near 4 yr college, 1966
+educ            byte    %9.0g                 years of schooling, 1976
+age             byte    %9.0g                 in years
+fatheduc        byte    %9.0g                 father's schooling
+motheduc        byte    %9.0g                 mother's schooling
+weight          float   %9.0g                 NLS sampling weight, 1976
+momdad14        byte    %9.0g                 =1 if live with mom, dad at 14
+sinmom14        byte    %9.0g                 =1 if with single mom at 14
+step14          byte    %9.0g                 =1 if with step parent at 14
+reg661          byte    %9.0g                 =1 for region 1, 1966
+reg662          byte    %9.0g                 =1 for region 2, 1966
+reg663          byte    %9.0g                 =1 for region 3, 1966
+reg664          byte    %9.0g                 =1 for region 4, 1966
+reg665          byte    %9.0g                 =1 for region 5, 1966
+reg666          byte    %9.0g                 =1 for region 6, 1966
+reg667          byte    %9.0g                 =1 for region 7, 1966
+reg668          byte    %9.0g                 =1 for region 8, 1966
+reg669          byte    %9.0g                 =1 for region 9, 1966
+south66         byte    %9.0g                 =1 if in south in 1966
+black           byte    %9.0g                 =1 if black
+smsa            byte    %9.0g                 =1 in in SMSA, 1976
+south           byte    %9.0g                 =1 if in south, 1976
+smsa66          byte    %9.0g                 =1 if in SMSA, 1966
+wage            int     %9.0g                 hourly wage in cents, 1976
+enroll          byte    %9.0g                 =1 if enrolled in school, 1976
+KWW             byte    %9.0g                 knowledge world of work score
+IQ              int     %9.0g                 IQ score
+married         byte    %9.0g                 =1 if married, 1976
+libcrd14        byte    %9.0g                 =1 if lib. card in home at 14
+exper           byte    %9.0g                 age - educ - 6
+lwage           float   %9.0g                 log(wage)
+expersq         int     %9.0g                 exper^2
+------------------------------------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+
+. summarize
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+          id |      3,010    2581.749    1500.539          2       5225
+      nearc2 |      3,010    .4408638    .4965731          0          1
+      nearc4 |      3,010    .6820598    .4657535          0          1
+        educ |      3,010    13.26346    2.676913          1         18
+         age |      3,010     28.1196    3.137004         24         34
+-------------+---------------------------------------------------------
+    fatheduc |      2,320    10.00345    3.720737          0         18
+    motheduc |      2,657    10.34814    3.179671          0         18
+      weight |      3,010    321185.3    170645.8      75607    1752340
+    momdad14 |      3,010    .7893688    .4078247          0          1
+    sinmom14 |      3,010    .1006645    .3009339          0          1
+-------------+---------------------------------------------------------
+      step14 |      3,010    .0388704    .1933182          0          1
+      reg661 |      3,010    .0465116    .2106253          0          1
+      reg662 |      3,010    .1607973     .367405          0          1
+      reg663 |      3,010    .1956811      .39679          0          1
+      reg664 |      3,010    .0641196    .2450066          0          1
+-------------+---------------------------------------------------------
+      reg665 |      3,010    .2083056     .406164          0          1
+      reg666 |      3,010    .0960133    .2946584          0          1
+      reg667 |      3,010    .1099668    .3129003          0          1
+      reg668 |      3,010    .0282392     .165683          0          1
+      reg669 |      3,010    .0903654    .2867522          0          1
+-------------+---------------------------------------------------------
+     south66 |      3,010    .4142857    .4926801          0          1
+       black |      3,010    .2335548    .4231624          0          1
+        smsa |      3,010    .7129568    .4524571          0          1
+       south |      3,010    .4036545    .4907113          0          1
+      smsa66 |      3,010    .6495017    .4772053          0          1
+-------------+---------------------------------------------------------
+        wage |      3,010    577.2824    262.9583        100       2404
+      enroll |      3,010    .0923588    .2895799          0          1
+         KWW |      2,963    33.54067    8.611619          4         56
+          IQ |      2,061    102.4498    15.42376         50        149
+     married |      3,003    2.271395    2.066823          1          6
+-------------+---------------------------------------------------------
+    libcrd14 |      2,997     .674341    .4686987          0          1
+       exper |      3,010    8.856146    4.141672          0         23
+       lwage |      3,010    6.261832    .4437976    4.60517   7.784889
+     expersq |      3,010    95.57907    84.61831          0        529
+
+. 
+. tabulate black 
+
+=1 if black |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |      2,307       76.64       76.64
+          1 |        703       23.36      100.00
+------------+-----------------------------------
+      Total |      3,010      100.00
+
+. tabulate married
+
+      =1 if |
+   married, |
+       1976 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |      2,144       71.40       71.40
+          2 |         14        0.47       71.86
+          3 |          3        0.10       71.96
+          4 |        155        5.16       77.12
+          5 |        102        3.40       80.52
+          6 |        585       19.48      100.00
+------------+-----------------------------------
+      Total |      3,003      100.00
+
+. tabulate enroll
+
+      =1 if |
+enrolled in |
+    school, |
+       1976 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |      2,732       90.76       90.76
+          1 |        278        9.24      100.00
+------------+-----------------------------------
+      Total |      3,010      100.00
+
+. tabulate momdad14
+
+ =1 if live |
+  with mom, |
+  dad at 14 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        634       21.06       21.06
+          1 |      2,376       78.94      100.00
+------------+-----------------------------------
+      Total |      3,010      100.00
+
+. tabulate sinmom14
+
+ =1 if with |
+ single mom |
+      at 14 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |      2,707       89.93       89.93
+          1 |        303       10.07      100.00
+------------+-----------------------------------
+      Total |      3,010      100.00
+
+. tabulate nearc4
+
+ =1 if near |
+       4 yr |
+   college, |
+       1966 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        957       31.79       31.79
+          1 |      2,053       68.21      100.00
+------------+-----------------------------------
+      Total |      3,010      100.00
+
+. 
+. * Se tiene data sobre los individuos en dos momentos: 1966 y 1976. En 1976, los individuos evaluados (n=3010), en promedio, tienen una edad de
+>  28 años, 13 años de educación, con padres y madres con 10 años de educación, con un IQ de 102, con experiencia laboral de 8 años y con un sue
+> ldo por hora de 577 centavos. Asimismo, 23% son de raza negra, 71% son casados, 9% están inscritos en la escuela, 78% vivían con sus padres a 
+> los 14 años. En cuanto a la distancia con la universidad en 1966, 68% vivió cerca a su universidad durante los 4 años
+. 
+. * Intrepretación: 
+. * ¿Qué información nos provee el promedio de la dependiente en la interpretación de los coeficientes? 
+. * La dependiente "lwage" es el logaritmo del pago por hora en centavos. 
+. * La media de wage es 577, lo que implica que en promedio los evaluados perciben 577 centavos por hora. Sin embargo, para efectos del modelo, 
+> se emplea una transformación de esta variable (lwage: logaritmo de wage). La variación del promedio de lwage indicará el efecto de la variable
+>  independiente sobre el salario por hora. 
+. 
+. *¿Cómo se interpretan los coeficientes en este caso?
+. * lwage permitirá determinar la magnitud y la orientación del efecto en términos del salario promedio percibido, es decir, si el modelo es una
+>  buena aproximación para entender el retorno de la educación en términos de salario 
+. 
+. 
+. * 2. Regresione usando OLS el siguiente modelo en Stata 
+. 
+. reg lwage educ c.exper##c.exper age black south smsa smsa66 reg661-reg668
+note: age omitted because of collinearity.
+
+      Source |       SS           df       MS      Number of obs   =     3,010
+-------------+----------------------------------   F(15, 2994)     =     85.48
+       Model |  177.695591        15  11.8463727   Prob > F        =    0.0000
+    Residual |  414.946054     2,994  .138592536   R-squared       =    0.2998
+-------------+----------------------------------   Adj R-squared   =    0.2963
+       Total |  592.641645     3,009  .196956346   Root MSE        =    .37228
+
+---------------------------------------------------------------------------------
+          lwage | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+----------------+----------------------------------------------------------------
+           educ |   .0746933   .0034983    21.35   0.000     .0678339    .0815527
+          exper |    .084832   .0066242    12.81   0.000     .0718435    .0978205
+                |
+c.exper#c.exper |   -.002287   .0003166    -7.22   0.000    -.0029079   -.0016662
+                |
+            age |          0  (omitted)
+          black |  -.1990123   .0182483   -10.91   0.000    -.2347927   -.1632318
+          south |   -.147955   .0259799    -5.69   0.000    -.1988952   -.0970148
+           smsa |   .1363845   .0201005     6.79   0.000     .0969724    .1757967
+         smsa66 |   .0262417   .0194477     1.35   0.177    -.0118905    .0643739
+         reg661 |  -.1185698   .0388301    -3.05   0.002     -.194706   -.0424335
+         reg662 |  -.0222026   .0282575    -0.79   0.432    -.0776088    .0332036
+         reg663 |   .0259703   .0273644     0.95   0.343    -.0276846    .0796251
+         reg664 |  -.0634942   .0356803    -1.78   0.075    -.1334546    .0064662
+         reg665 |   .0094551   .0361174     0.26   0.794    -.0613623    .0802725
+         reg666 |   .0219476   .0400984     0.55   0.584    -.0566755    .1005708
+         reg667 |  -.0005887   .0393793    -0.01   0.988     -.077802    .0766245
+         reg668 |  -.1750058   .0463394    -3.78   0.000     -.265866   -.0841456
+          _cons |   4.739377   .0715282    66.26   0.000     4.599127    4.879626
+---------------------------------------------------------------------------------
+
+. 
+. * ¿Qué ocurre con edad? ¿Por qué? 
+. * La variable edad aparece omitida, debido a la presencia de multicolinealidad con otras variables. Una de ellas puede ser "exper", ya que es 
+> calculada a partir de la edad
+. 
+. * Ahora saque edad del modelo anterior y regresione de nuevo. Interprete el estimado obtenido para educación, y compárelos con la Tabla 2, Col
+> umna 2, del paper 
+. reg lwage educ c.exper##c.exper black south smsa smsa66 reg661-reg668
+
+      Source |       SS           df       MS      Number of obs   =     3,010
+-------------+----------------------------------   F(15, 2994)     =     85.48
+       Model |  177.695591        15  11.8463727   Prob > F        =    0.0000
+    Residual |  414.946054     2,994  .138592536   R-squared       =    0.2998
+-------------+----------------------------------   Adj R-squared   =    0.2963
+       Total |  592.641645     3,009  .196956346   Root MSE        =    .37228
+
+---------------------------------------------------------------------------------
+          lwage | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+----------------+----------------------------------------------------------------
+           educ |   .0746933   .0034983    21.35   0.000     .0678339    .0815527
+          exper |    .084832   .0066242    12.81   0.000     .0718435    .0978205
+                |
+c.exper#c.exper |   -.002287   .0003166    -7.22   0.000    -.0029079   -.0016662
+                |
+          black |  -.1990123   .0182483   -10.91   0.000    -.2347927   -.1632318
+          south |   -.147955   .0259799    -5.69   0.000    -.1988952   -.0970148
+           smsa |   .1363845   .0201005     6.79   0.000     .0969724    .1757967
+         smsa66 |   .0262417   .0194477     1.35   0.177    -.0118905    .0643739
+         reg661 |  -.1185698   .0388301    -3.05   0.002     -.194706   -.0424335
+         reg662 |  -.0222026   .0282575    -0.79   0.432    -.0776088    .0332036
+         reg663 |   .0259703   .0273644     0.95   0.343    -.0276846    .0796251
+         reg664 |  -.0634942   .0356803    -1.78   0.075    -.1334546    .0064662
+         reg665 |   .0094551   .0361174     0.26   0.794    -.0613623    .0802725
+         reg666 |   .0219476   .0400984     0.55   0.584    -.0566755    .1005708
+         reg667 |  -.0005887   .0393793    -0.01   0.988     -.077802    .0766245
+         reg668 |  -.1750058   .0463394    -3.78   0.000     -.265866   -.0841456
+          _cons |   4.739377   .0715282    66.26   0.000     4.599127    4.879626
+---------------------------------------------------------------------------------
+
+. 
+. * Se identificó, en cuanto a la variable educación, el mismo puntaje que el presentado en la tabla 2 columna 2; cabe recordar que la tabla 2 m
+> uestra diferentes puntajes ya que se realizan varias estimaciones. El coeficiente obtenido fue de 0.075, con un p valor menor a 0.05, lo cual 
+> indica una influencia positiva significativa de la variable educación sobre la variable dependiente (lwage). 
+. 
+end of do-file
+
+. exit, clear
