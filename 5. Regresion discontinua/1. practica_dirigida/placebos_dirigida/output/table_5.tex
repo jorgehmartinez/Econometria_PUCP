@@ -1,0 +1,27 @@
+\begin{table}[H]\centering  \fontsize{10}{4}\selectfont            \begin{threeparttable} \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}            \caption{Estimaciones Aumentando el BandWidth}
+\label{comparacion cut off}
+\begin{tabular}{l*{3}c}
+\hline
+\hline
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+            &\multicolumn{1}{c}{Bandwidth 0.025}&\multicolumn{1}{c}{Bandwidth 0.15}&\multicolumn{1}{c}{Bandwidth 0.25}\\
+\hline
+Tratamiento &     -0.4957\sym{**} &     -0.3040\sym{**} &     -0.2817\sym{***}\\
+            &    (0.2043)         &    (0.1287)         &    (0.1093)         \\
+\hline
+Obs         &         349         &         349         &         349         \\
+All Obs Left&         131         &         131         &         131         \\
+All Obs Right&         218         &         218         &         218         \\
+Effec. Obs Left&          16         &          82         &         125         \\
+Effec. Obs Right&          12         &         113         &         184         \\
+Bandwidth Left&       0.025         &       0.150         &       0.250         \\
+Bandwidth Right&       0.025         &       0.150         &       0.250         \\
+\hline
+\hline
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\begin{tablenotes}
+\begin{footnotesize}
+\end{footnotesize}
+\end{tablenotes} \end{threeparttable} \end{table}

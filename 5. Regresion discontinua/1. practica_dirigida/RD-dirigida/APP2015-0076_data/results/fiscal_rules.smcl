@@ -1,0 +1,2114 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\Anzony\Documents\GitHub\Advanced_Applied_Econometrics_QLAB_PUCP_2022_I\RD\Data\APP2015-0076_data\results\fiscal_rules.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 3 May 2022, 22:49:48
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "c:\users\anzony\appdata\local\temp\st_stata_temp.tmp"
+{txt}
+{com}. qui tab anno treatment_t
+{txt}
+{com}. egen treated=max(treatment_t),by(id_codente)
+{txt}
+{com}. qui tab anno treated
+{txt}
+{com}. 
+. label define postper 0 "Before" 1 "After"
+{txt}
+{com}. label define treated 0 "Above 5,000" 1 "Below 5,000"
+{txt}
+{com}. label val treated treated
+{txt}
+{com}. label val postper postper
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "c:\users\anzony\appdata\local\temp\st_stata_temp.tmp"
+{txt}
+{com}. foreach var in saldofinanziario_pc deficit_pc spesecor_pc spesecocap_pc expend_interest_pc tasse imposte trafgrants_pc entrate_altre_pc aliquota_ordinaria aliquota_irpef {c -(}
+{txt}  2{com}. display ""
+{txt}  3{com}. display "`var'"
+{txt}  4{com}. table treated,c(m `var')
+{txt}  5{com}. {c )-}
+
+saldofinanziario_pc
+
+{txt}{hline 12}{c TT}{hline 15}
+    treated {c |} mean(saldof~c)
+{hline 12}{c +}{hline 15}
+Above 5,000 {c |}       {res}170.7244
+{txt}Below 5,000 {c |}       {res}208.6236
+{txt}{hline 12}{c BT}{hline 15}
+
+deficit_pc
+
+{hline 12}{c TT}{hline 15}
+    treated {c |} mean(defici~c)
+{hline 12}{c +}{hline 15}
+Above 5,000 {c |}       {res}11.08052
+{txt}Below 5,000 {c |}        {res}15.4568
+{txt}{hline 12}{c BT}{hline 15}
+
+spesecor_pc
+
+{hline 12}{c TT}{hline 15}
+    treated {c |} mean(spesec~c)
+{hline 12}{c +}{hline 15}
+Above 5,000 {c |}       {res}475.3125
+{txt}Below 5,000 {c |}       {res}502.1814
+{txt}{hline 12}{c BT}{hline 15}
+
+spesecocap_pc
+
+{hline 12}{c TT}{hline 15}
+    treated {c |} mean(spesec~c)
+{hline 12}{c +}{hline 15}
+Above 5,000 {c |}       {res}438.8385
+{txt}Below 5,000 {c |}       {res}508.7942
+{txt}{hline 12}{c BT}{hline 15}
+
+expend_interest_pc
+
+{hline 12}{c TT}{hline 15}
+    treated {c |} mean(expend~c)
+{hline 12}{c +}{hline 15}
+Above 5,000 {c |}       {res}29.13923
+{txt}Below 5,000 {c |}        {res}30.1074
+{txt}{hline 12}{c BT}{hline 15}
+
+tasse
+
+{hline 12}{c TT}{hline 12}
+    treated {c |} mean(tasse)
+{hline 12}{c +}{hline 12}
+Above 5,000 {c |} {res}56.60140312
+{txt}Below 5,000 {c |} {res}58.93775775
+{txt}{hline 12}{c BT}{hline 12}
+
+imposte
+
+{hline 12}{c TT}{hline 14}
+    treated {c |} mean(imposte)
+{hline 12}{c +}{hline 14}
+Above 5,000 {c |}   {res}194.8873646
+{txt}Below 5,000 {c |}   {res}175.8249825
+{txt}{hline 12}{c BT}{hline 14}
+
+trafgrants_pc
+
+{hline 12}{c TT}{hline 15}
+    treated {c |} mean(trafgr~c)
+{hline 12}{c +}{hline 15}
+Above 5,000 {c |}       {res}188.7831
+{txt}Below 5,000 {c |}       {res}223.2742
+{txt}{hline 12}{c BT}{hline 15}
+
+entrate_altre_pc
+
+{hline 12}{c TT}{hline 15}
+    treated {c |} mean(entrat~c)
+{hline 12}{c +}{hline 15}
+Above 5,000 {c |}       {res}491.9378
+{txt}Below 5,000 {c |}       {res}567.5892
+{txt}{hline 12}{c BT}{hline 15}
+
+aliquota_ordinaria
+
+{hline 12}{c TT}{hline 15}
+    treated {c |} mean(aliquo~a)
+{hline 12}{c +}{hline 15}
+Above 5,000 {c |}      {res}.58733165
+{txt}Below 5,000 {c |}      {res}.57627177
+{txt}{hline 12}{c BT}{hline 15}
+
+aliquota_irpef
+
+{hline 12}{c TT}{hline 15}
+    treated {c |} mean(aliquo~f)
+{hline 12}{c +}{hline 15}
+Above 5,000 {c |}      {res}.30901382
+{txt}Below 5,000 {c |}      {res}.30901652
+{txt}{hline 12}{c BT}{hline 15}
+
+{com}. 
+. tab treated
+
+    {txt}treated {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+Above 5,000 {c |}{res}      2,970       47.14       47.14
+{txt}Below 5,000 {c |}{res}      3,330       52.86      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      6,300      100.00
+{txt}
+{com}. summ saldofinanziario_pc deficit_pc spesecor_pc spesecocap_pc expend_interest_pc tasse imposte trafgrants_pc entrate_altre_pc aliquota_ordinaria aliquota_irpef
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+saldofinan~c {c |}{res}      6,300    190.7569    126.5593   -591.196   1766.979
+{txt}{space 2}deficit_pc {c |}{res}      6,300     13.3937    50.31674  -762.5508   1065.269
+{txt}{space 1}spesecor_pc {c |}{res}      6,300    489.5146    180.7092   27.85069   2664.045
+{txt}spesecocap~c {c |}{res}      6,300     475.815    748.3582   10.95864   29149.12
+{txt}expend_int~c {c |}{res}      6,300    29.65098    16.89202          0   279.0819
+{txt}{hline 13}{c +}{hline 57}
+{space 7}tasse {c |}{res}      6,300    57.83633    34.30045          0   348.8588
+{txt}{space 5}imposte {c |}{res}      6,300    184.8115     109.793          0   923.2619
+{txt}trafgrants~c {c |}{res}      6,300    207.0141    114.0538   12.02563   1734.149
+{txt}entrate_al~c {c |}{res}      6,300    531.9249    768.9565   10.08917   29825.68
+{txt}aliquota_o~a {c |}{res}      6,300    .5814857    .0790876         .4         .7
+{txt}{hline 13}{c +}{hline 57}
+aliquota_i~f {c |}{res}      4,588    .3090152    .1319274          0         .5
+{txt}
+{com}. 
+. save final_data_grembi, replace
+{txt}file final_data_grembi.dta saved
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "c:\users\anzony\appdata\local\temp\st_stata_temp.tmp"
+{txt}
+{com}. rdplot deficit_pc pop5000 if anno>2000&anno<2005
+{res}
+{txt}Number of bins for RD estimates.
+Method: Mimicking Variance evenly spaced using spacings estimators.
+
+{ralign 27: Cutoff c = 0}{col 28} {c |} {col 29}Left of {res}c{col 45}{txt}Right of {res}c
+{txt}{hline 28}{c +}{hline 25}
+{ralign 27:Number of observations}{col 28} {c |} {col 33}{res}   2220{col 48}   1980
+{txt}{ralign 27:Polynomial order}{col 28} {c |} {col 33}{res}      4{col 48}      4
+{txt}{ralign 27:Chosen scale}{col 28} {c |} {col 33}{res}  1.000{col 48}  1.000
+{txt}{hline 28}{c +}{hline 25}
+{ralign 27:Selected bins}{col 28} {c |} {col 33}{res}    102{col 48}     88
+{txt}{ralign 27:Bin length}{col 28} {c |} {col 33}{res} 14.696{col 48} 22.614
+{txt}{hline 28}{c +}{hline 25}
+{ralign 27:IMSE-optimal bins}{col 28} {c |} {col 33}{res}      6{col 48}      6
+{txt}{ralign 27:Mimicking Variance bins}{col 28} {c |} {col 33}{res}    102{col 48}     88
+{txt}{hline 28}{c +}{hline 25}
+{lalign 1:Relative to IMSE-optimal:}{col 28} {c |} 
+{ralign 27:Implied scale}{col 28} {c |} {col 33}{res} 17.000{col 48} 14.667
+{txt}{ralign 27:WIMSE variance weight}{col 28} {c |} {col 33}{res}  0.000{col 48}  0.000
+{txt}{ralign 27:WIMSE bias weight}{col 28} {c |} {col 33}{res}  1.000{col 48}  1.000
+{txt}{hline 28}{c BT}{hline 25}
+
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "c:\users\anzony\appdata\local\temp\st_stata_temp.tmp"
+{txt}
+{com}. rdplot deficit_pc pop5000 if anno<2001&anno>1998
+{res}
+{txt}Number of bins for RD estimates.
+Method: Mimicking Variance evenly spaced using spacings estimators.
+
+{ralign 27: Cutoff c = 0}{col 28} {c |} {col 29}Left of {res}c{col 45}{txt}Right of {res}c
+{txt}{hline 28}{c +}{hline 25}
+{ralign 27:Number of observations}{col 28} {c |} {col 33}{res}   1232{col 48}    868
+{txt}{ralign 27:Polynomial order}{col 28} {c |} {col 33}{res}      4{col 48}      4
+{txt}{ralign 27:Chosen scale}{col 28} {c |} {col 33}{res}  1.000{col 48}  1.000
+{txt}{hline 28}{c +}{hline 25}
+{ralign 27:Selected bins}{col 28} {c |} {col 33}{res}     32{col 48}     35
+{txt}{ralign 27:Bin length}{col 28} {c |} {col 33}{res} 46.813{col 48} 55.971
+{txt}{hline 28}{c +}{hline 25}
+{ralign 27:IMSE-optimal bins}{col 28} {c |} {col 33}{res}      5{col 48}      5
+{txt}{ralign 27:Mimicking Variance bins}{col 28} {c |} {col 33}{res}     32{col 48}     35
+{txt}{hline 28}{c +}{hline 25}
+{lalign 1:Relative to IMSE-optimal:}{col 28} {c |} 
+{ralign 27:Implied scale}{col 28} {c |} {col 33}{res}  6.400{col 48}  7.000
+{txt}{ralign 27:WIMSE variance weight}{col 28} {c |} {col 33}{res}  0.004{col 48}  0.003
+{txt}{ralign 27:WIMSE bias weight}{col 28} {c |} {col 33}{res}  0.996{col 48}  0.997
+{txt}{hline 28}{c BT}{hline 25}
+
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "c:\users\anzony\appdata\local\temp\st_stata_temp.tmp"
+{txt}
+{com}. * Cols 1-2 - Fiscal Discipline
+. foreach var in deficit_pc saldofinanziario_pc {c -(}
+{txt}  2{com}. rdrobust `var' pop5000 if anno>2000&anno<2005
+{txt}  3{com}. local band1=e(h_bw)
+{txt}  4{com}. rdrobust `var' pop5000 if anno<2001&anno>1998
+{txt}  5{com}. local band2=e(h_bw)
+{txt}  6{com}. local band=(`band1'+`band2')/2
+{txt}  7{com}. display "`band'"
+{txt}  8{com}. 
+. rdrobust `var' pop5000 if anno>2000&anno<2005, bwselect(CV ) 
+{txt}  9{com}. local bandd1=e(h_bw)
+{txt} 10{com}. rdrobust `var' pop5000 if anno<2001&anno>1998,  bwselect(CV )
+{txt} 11{com}. local bandd2=e(h_bw)
+{txt} 12{com}. local bandd=(`bandd1'+`bandd2')/2
+{txt} 13{com}. display "`bandd'"
+{txt} 14{com}.  
+. xi: reg `var' treatment_t t5000 pop5000 treatment_t_int1 ///
+>                 t5000_int1 postper postper_int1 if abs(pop5000)<`band', r cluster(id_codente)
+{txt} 15{com}. outreg2 treatment_t using tab_base_`var', bdec(3) ///
+>                 nocons tex(nopretty) replace
+{txt} 16{com}. xi: reg `var' treatment_t t5000 pop5000 treatment_t_int1 ///
+>                 t5000_int1 postper postper_int1 if abs(pop5000)<`bandd', r cluster(id_codente)
+{txt} 17{com}. outreg2 treatment_t using tab_base_`var', bdec(3) nocons tex(nopretty) append
+{txt} 18{com}. {c )-}
+{res}Preparing data.
+Computing bandwidth selectors.
+Computing variance-covariance matrix.
+Computing RD estimates.
+Estimation completed.
+
+Sharp RD estimates using local polynomial regression.
+
+{txt}{ralign 21: Cutoff c = 0}{col 22} {c |} {col 23}Left of {res}c{col 36}{txt}Right of {res}c{col 61}{txt}Number of obs = {res}      4200
+{txt}{hline 22}{c +}{hline 22}{col 61}NN matches    = {res}         3
+{txt}{ralign 21:Number of obs}{col 22} {c |} {col 23}{res}     1028{col 37}      852{col 61}{txt}BW type       = {res}{ralign 10:CCT}
+{txt}{ralign 21:Order loc. poly. (p)}{col 22} {c |} {col 23}{res}        1{col 37}        1{col 61}{txt}Kernel type   = {res}{ralign 10:Triangular}
+{txt}{ralign 21:Order bias (q)}{col 22} {c |} {col 23}{res}        2{col 37}        2
+{txt}{ralign 21:BW loc. poly. (h)}{col 22} {c |} {col 23}{res}  706.905{col 37}  706.905
+{txt}{ralign 21:BW bias (b)}{col 22} {c |} {col 23}{res} 1001.048{col 37} 1001.048
+{txt}{ralign 21:rho (h/b)}{col 22} {c |} {col 23}{res}    0.706{col 37}    0.706
+
+Outcome: deficit_pc. Running variable: pop5000.
+{txt}{hline 22}{c TT}{hline 63}
+{ralign 21:Method}{col 22} {c |} {col 28}Coef.{col 36}Std. Err.{col 50}z{col 57}P>|z|{col 67}[95% Conf. Interval]
+{hline 22}{c +}{hline 63}
+{ralign 21:Conventional}{col 22} {c |} {col 26}{res}-7.4805{col 36} 6.8367{col 47}-1.0942{col 57}0.274{col 68}-20.8802{col 79}  5.9191
+{txt}{ralign 21:Robust}{col 22} {c |} {col 26}{res}    -{col 36}    -{col 47}-1.1143{col 57}0.265{col 68}-24.5309{col 79} 6.74839
+{txt}{hline 22}{c BT}{hline 63}
+
+{res}Preparing data.
+Computing bandwidth selectors.
+Computing variance-covariance matrix.
+Computing RD estimates.
+Estimation completed.
+
+Sharp RD estimates using local polynomial regression.
+
+{txt}{ralign 21: Cutoff c = 0}{col 22} {c |} {col 23}Left of {res}c{col 36}{txt}Right of {res}c{col 61}{txt}Number of obs = {res}      2100
+{txt}{hline 22}{c +}{hline 22}{col 61}NN matches    = {res}         3
+{txt}{ralign 21:Number of obs}{col 22} {c |} {col 23}{res}      364{col 37}      338{col 61}{txt}BW type       = {res}{ralign 10:CCT}
+{txt}{ralign 21:Order loc. poly. (p)}{col 22} {c |} {col 23}{res}        1{col 37}        1{col 61}{txt}Kernel type   = {res}{ralign 10:Triangular}
+{txt}{ralign 21:Order bias (q)}{col 22} {c |} {col 23}{res}        2{col 37}        2
+{txt}{ralign 21:BW loc. poly. (h)}{col 22} {c |} {col 23}{res}  493.201{col 37}  493.201
+{txt}{ralign 21:BW bias (b)}{col 22} {c |} {col 23}{res}  718.653{col 37}  718.653
+{txt}{ralign 21:rho (h/b)}{col 22} {c |} {col 23}{res}    0.686{col 37}    0.686
+
+Outcome: deficit_pc. Running variable: pop5000.
+{txt}{hline 22}{c TT}{hline 63}
+{ralign 21:Method}{col 22} {c |} {col 28}Coef.{col 36}Std. Err.{col 50}z{col 57}P>|z|{col 67}[95% Conf. Interval]
+{hline 22}{c +}{hline 63}
+{ralign 21:Conventional}{col 22} {c |} {col 26}{res} 11.123{col 36} 6.0623{col 47}1.8348{col 57}0.067{col 68} -.75849{col 79} 23.0052
+{txt}{ralign 21:Robust}{col 22} {c |} {col 26}{res}    -{col 36}    -{col 47}1.6099{col 57}0.107{col 68}-2.49969{col 79} 25.4917
+{txt}{hline 22}{c BT}{hline 63}
+
+600.0529253119353
+{res}Preparing data.
+Computing bandwidth selectors.
+Computing variance-covariance matrix.
+Computing RD estimates.
+Estimation completed.
+
+Sharp RD estimates using local polynomial regression.
+
+{txt}{ralign 21: Cutoff c = 0}{col 22} {c |} {col 23}Left of {res}c{col 36}{txt}Right of {res}c{col 61}{txt}Number of obs = {res}      4200
+{txt}{hline 22}{c +}{hline 22}{col 61}NN matches    = {res}         3
+{txt}{ralign 21:Number of obs}{col 22} {c |} {col 23}{res}     2216{col 37}     1628{col 61}{txt}BW type       = {res}{ralign 10:CV}
+{txt}{ralign 21:Order loc. poly. (p)}{col 22} {c |} {col 23}{res}        1{col 37}        1{col 61}{txt}Kernel type   = {res}{ralign 10:Triangular}
+{txt}{ralign 21:Order bias (q)}{col 22} {c |} {col 23}{res}        2{col 37}        2
+{txt}{ralign 21:BW loc. poly. (h)}{col 22} {c |} {col 23}{res} 1499.000{col 37} 1499.000
+{txt}{ralign 21:BW bias (b)}{col 22} {c |} {col 23}{res} 1499.000{col 37} 1499.000
+{txt}{ralign 21:rho (h/b)}{col 22} {c |} {col 23}{res}    1.000{col 37}    1.000
+
+Outcome: deficit_pc. Running variable: pop5000.
+{txt}{hline 22}{c TT}{hline 63}
+{ralign 21:Method}{col 22} {c |} {col 28}Coef.{col 36}Std. Err.{col 50}z{col 57}P>|z|{col 67}[95% Conf. Interval]
+{hline 22}{c +}{hline 63}
+{ralign 21:Conventional}{col 22} {c |} {col 26}{res}-5.2938{col 36} 4.6702{col 47}-1.1335{col 57}0.257{col 68}-14.4473{col 79} 3.85971
+{txt}{ralign 21:Robust}{col 22} {c |} {col 26}{res}    -{col 36}    -{col 47}-0.9385{col 57}0.348{col 68}-20.2285{col 79} 7.12846
+{txt}{hline 22}{c BT}{hline 63}
+
+{res}Preparing data.
+Computing bandwidth selectors.
+Computing variance-covariance matrix.
+Computing RD estimates.
+Estimation completed.
+
+Sharp RD estimates using local polynomial regression.
+
+{txt}{ralign 21: Cutoff c = 0}{col 22} {c |} {col 23}Left of {res}c{col 36}{txt}Right of {res}c{col 61}{txt}Number of obs = {res}      2100
+{txt}{hline 22}{c +}{hline 22}{col 61}NN matches    = {res}         3
+{txt}{ralign 21:Number of obs}{col 22} {c |} {col 23}{res}     1230{col 37}      784{col 61}{txt}BW type       = {res}{ralign 10:CV}
+{txt}{ralign 21:Order loc. poly. (p)}{col 22} {c |} {col 23}{res}        1{col 37}        1{col 61}{txt}Kernel type   = {res}{ralign 10:Triangular}
+{txt}{ralign 21:Order bias (q)}{col 22} {c |} {col 23}{res}        2{col 37}        2
+{txt}{ralign 21:BW loc. poly. (h)}{col 22} {c |} {col 23}{res} 1498.000{col 37} 1498.000
+{txt}{ralign 21:BW bias (b)}{col 22} {c |} {col 23}{res} 1498.000{col 37} 1498.000
+{txt}{ralign 21:rho (h/b)}{col 22} {c |} {col 23}{res}    1.000{col 37}    1.000
+
+Outcome: deficit_pc. Running variable: pop5000.
+{txt}{hline 22}{c TT}{hline 63}
+{ralign 21:Method}{col 22} {c |} {col 28}Coef.{col 36}Std. Err.{col 50}z{col 57}P>|z|{col 67}[95% Conf. Interval]
+{hline 22}{c +}{hline 63}
+{ralign 21:Conventional}{col 22} {c |} {col 26}{res} 7.1554{col 36} 3.5562{col 47}2.0121{col 57}0.044{col 68}   .1854{col 79} 14.1254
+{txt}{ralign 21:Robust}{col 22} {c |} {col 26}{res}    -{col 36}    -{col 47}2.3020{col 57}0.021{col 68} 1.74916{col 79} 21.7953
+{txt}{hline 22}{c BT}{hline 63}
+
+1498.5
+
+Linear regression                               Number of obs     = {res}     2,414
+                                                {txt}F(7, 523)         =  {res}     1.66
+                                                {txt}Prob > F          = {res}    0.1177
+                                                {txt}R-squared         = {res}    0.0034
+                                                {txt}Root MSE          =    {res} 53.766
+
+{txt}{ralign 82:(Std. Err. adjusted for {res:524} clusters in id_codente)}
+{hline 17}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 18}{c |}{col 30}    Robust
+{col 1}      deficit_pc{col 18}{c |}      Coef.{col 30}   Std. Err.{col 42}      t{col 50}   P>|t|{col 58}     [95% Con{col 71}f. Interval]
+{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}treatment_t {c |}{col 18}{res}{space 2} 17.49543{col 30}{space 2} 7.737338{col 41}{space 1}    2.26{col 50}{space 3}0.024{col 58}{space 4} 2.295352{col 71}{space 3} 32.69551
+{txt}{space 11}t5000 {c |}{col 18}{res}{space 2} 9.945815{col 30}{space 2} 4.795988{col 41}{space 1}    2.07{col 50}{space 3}0.039{col 58}{space 4} .5240478{col 71}{space 3} 19.36758
+{txt}{space 9}pop5000 {c |}{col 18}{res}{space 2}-.0118698{col 30}{space 2} .0096015{col 41}{space 1}   -1.24{col 50}{space 3}0.217{col 58}{space 4} -.030732{col 71}{space 3} .0069925
+{txt}treatment_t_int1 {c |}{col 18}{res}{space 2} .0277417{col 30}{space 2} .0209803{col 41}{space 1}    1.32{col 50}{space 3}0.187{col 58}{space 4}-.0134742{col 71}{space 3} .0689576
+{txt}{space 6}t5000_int1 {c |}{col 18}{res}{space 2} .0026553{col 30}{space 2} .0137678{col 41}{space 1}    0.19{col 50}{space 3}0.847{col 58}{space 4}-.0243916{col 71}{space 3} .0297022
+{txt}{space 9}postper {c |}{col 18}{res}{space 2}-4.329776{col 30}{space 2}  4.96316{col 41}{space 1}   -0.87{col 50}{space 3}0.383{col 58}{space 4}-14.07996{col 71}{space 3} 5.420403
+{txt}{space 4}postper_int1 {c |}{col 18}{res}{space 2}  .000744{col 30}{space 2} .0141317{col 41}{space 1}    0.05{col 50}{space 3}0.958{col 58}{space 4}-.0270179{col 71}{space 3} .0285058
+{txt}{space 11}_cons {c |}{col 18}{res}{space 2} 7.048062{col 30}{space 2} 3.296439{col 41}{space 1}    2.14{col 50}{space 3}0.033{col 58}{space 4} .5721745{col 71}{space 3} 13.52395
+{txt}{hline 17}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{stata `"shellout using `"tab_base_deficit_pc.tex"'"':tab_base_deficit_pc.tex}
+{browse `"C:\Users\Anzony\Documents\GitHub\Advanced_Applied_Econometrics_QLAB_PUCP_2022_I\RD\Data\APP2015-0076_data\results"' :dir}{com} : {txt}{stata `"seeout using "tab_base_deficit_pc.txt""':seeout}
+
+Linear regression                               Number of obs     = {res}     5,858
+                                                {txt}F(7, 1017)        =  {res}     2.04
+                                                {txt}Prob > F          = {res}    0.0478
+                                                {txt}R-squared         = {res}    0.0023
+                                                {txt}Root MSE          =    {res} 50.204
+
+{txt}{ralign 82:(Std. Err. adjusted for {res:1,018} clusters in id_codente)}
+{hline 17}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 18}{c |}{col 30}    Robust
+{col 1}      deficit_pc{col 18}{c |}      Coef.{col 30}   Std. Err.{col 42}      t{col 50}   P>|t|{col 58}     [95% Con{col 71}f. Interval]
+{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}treatment_t {c |}{col 18}{res}{space 2} 9.454133{col 30}{space 2}  4.34347{col 41}{space 1}    2.18{col 50}{space 3}0.030{col 58}{space 4} .9309446{col 71}{space 3} 17.97732
+{txt}{space 11}t5000 {c |}{col 18}{res}{space 2} 3.700122{col 30}{space 2} 2.972624{col 41}{space 1}    1.24{col 50}{space 3}0.214{col 58}{space 4}-2.133057{col 71}{space 3}   9.5333
+{txt}{space 9}pop5000 {c |}{col 18}{res}{space 2}-.0034754{col 30}{space 2} .0023312{col 41}{space 1}   -1.49{col 50}{space 3}0.136{col 58}{space 4}-.0080499{col 71}{space 3}  .001099
+{txt}treatment_t_int1 {c |}{col 18}{res}{space 2} 9.41e-06{col 30}{space 2} .0048782{col 41}{space 1}    0.00{col 50}{space 3}0.998{col 58}{space 4} -.009563{col 71}{space 3} .0095819
+{txt}{space 6}t5000_int1 {c |}{col 18}{res}{space 2} .0021644{col 30}{space 2} .0036285{col 41}{space 1}    0.60{col 50}{space 3}0.551{col 58}{space 4}-.0049559{col 71}{space 3} .0092847
+{txt}{space 9}postper {c |}{col 18}{res}{space 2}-3.726449{col 30}{space 2}  2.98616{col 41}{space 1}   -1.25{col 50}{space 3}0.212{col 58}{space 4}-9.586189{col 71}{space 3} 2.133292
+{txt}{space 4}postper_int1 {c |}{col 18}{res}{space 2} .0026205{col 30}{space 2} .0034996{col 41}{space 1}    0.75{col 50}{space 3}0.454{col 58}{space 4}-.0042467{col 71}{space 3} .0094877
+{txt}{space 11}_cons {c |}{col 18}{res}{space 2} 10.17112{col 30}{space 2} 1.939114{col 41}{space 1}    5.25{col 50}{space 3}0.000{col 58}{space 4} 6.365995{col 71}{space 3} 13.97624
+{txt}{hline 17}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{stata `"shellout using `"tab_base_deficit_pc.tex"'"':tab_base_deficit_pc.tex}
+{browse `"C:\Users\Anzony\Documents\GitHub\Advanced_Applied_Econometrics_QLAB_PUCP_2022_I\RD\Data\APP2015-0076_data\results"' :dir}{com} : {txt}{stata `"seeout using "tab_base_deficit_pc.txt""':seeout}
+{res}Preparing data.
+Computing bandwidth selectors.
+Computing variance-covariance matrix.
+Computing RD estimates.
+Estimation completed.
+
+Sharp RD estimates using local polynomial regression.
+
+{txt}{ralign 21: Cutoff c = 0}{col 22} {c |} {col 23}Left of {res}c{col 36}{txt}Right of {res}c{col 61}{txt}Number of obs = {res}      4200
+{txt}{hline 22}{c +}{hline 22}{col 61}NN matches    = {res}         3
+{txt}{ralign 21:Number of obs}{col 22} {c |} {col 23}{res}      812{col 37}      684{col 61}{txt}BW type       = {res}{ralign 10:CCT}
+{txt}{ralign 21:Order loc. poly. (p)}{col 22} {c |} {col 23}{res}        1{col 37}        1{col 61}{txt}Kernel type   = {res}{ralign 10:Triangular}
+{txt}{ralign 21:Order bias (q)}{col 22} {c |} {col 23}{res}        2{col 37}        2
+{txt}{ralign 21:BW loc. poly. (h)}{col 22} {c |} {col 23}{res}  557.128{col 37}  557.128
+{txt}{ralign 21:BW bias (b)}{col 22} {c |} {col 23}{res}  997.966{col 37}  997.966
+{txt}{ralign 21:rho (h/b)}{col 22} {c |} {col 23}{res}    0.558{col 37}    0.558
+
+Outcome: saldofinanziario_pc. Running variable: pop5000.
+{txt}{hline 22}{c TT}{hline 63}
+{ralign 21:Method}{col 22} {c |} {col 28}Coef.{col 36}Std. Err.{col 50}z{col 57}P>|z|{col 67}[95% Conf. Interval]
+{hline 22}{c +}{hline 63}
+{ralign 21:Conventional}{col 22} {c |} {col 26}{res} -43.43{col 36} 17.355{col 47}-2.5025{col 57}0.012{col 68}-77.4444{col 79} -9.4159
+{txt}{ralign 21:Robust}{col 22} {c |} {col 26}{res}    -{col 36}    -{col 47}-2.5658{col 57}0.010{col 68}-91.8286{col 79} -12.292
+{txt}{hline 22}{c BT}{hline 63}
+
+{res}Preparing data.
+Computing bandwidth selectors.
+Computing variance-covariance matrix.
+Computing RD estimates.
+Estimation completed.
+
+Sharp RD estimates using local polynomial regression.
+
+{txt}{ralign 21: Cutoff c = 0}{col 22} {c |} {col 23}Left of {res}c{col 36}{txt}Right of {res}c{col 61}{txt}Number of obs = {res}      2100
+{txt}{hline 22}{c +}{hline 22}{col 61}NN matches    = {res}         3
+{txt}{ralign 21:Number of obs}{col 22} {c |} {col 23}{res}      346{col 37}      318{col 61}{txt}BW type       = {res}{ralign 10:CCT}
+{txt}{ralign 21:Order loc. poly. (p)}{col 22} {c |} {col 23}{res}        1{col 37}        1{col 61}{txt}Kernel type   = {res}{ralign 10:Triangular}
+{txt}{ralign 21:Order bias (q)}{col 22} {c |} {col 23}{res}        2{col 37}        2
+{txt}{ralign 21:BW loc. poly. (h)}{col 22} {c |} {col 23}{res}  468.717{col 37}  468.717
+{txt}{ralign 21:BW bias (b)}{col 22} {c |} {col 23}{res}  788.246{col 37}  788.246
+{txt}{ralign 21:rho (h/b)}{col 22} {c |} {col 23}{res}    0.595{col 37}    0.595
+
+Outcome: saldofinanziario_pc. Running variable: pop5000.
+{txt}{hline 22}{c TT}{hline 63}
+{ralign 21:Method}{col 22} {c |} {col 28}Coef.{col 36}Std. Err.{col 50}z{col 57}P>|z|{col 67}[95% Conf. Interval]
+{hline 22}{c +}{hline 63}
+{ralign 21:Conventional}{col 22} {c |} {col 26}{res} 56.167{col 36} 18.309{col 47}3.0677{col 57}0.002{col 68} 20.2819{col 79} 92.0525
+{txt}{ralign 21:Robust}{col 22} {c |} {col 26}{res}    -{col 36}    -{col 47}2.9944{col 57}0.003{col 68} 21.3877{col 79} 102.438
+{txt}{hline 22}{c BT}{hline 63}
+
+512.9229615721617
+{res}Preparing data.
+Computing bandwidth selectors.
+Computing variance-covariance matrix.
+Computing RD estimates.
+Estimation completed.
+
+Sharp RD estimates using local polynomial regression.
+
+{txt}{ralign 21: Cutoff c = 0}{col 22} {c |} {col 23}Left of {res}c{col 36}{txt}Right of {res}c{col 61}{txt}Number of obs = {res}      4200
+{txt}{hline 22}{c +}{hline 22}{col 61}NN matches    = {res}         3
+{txt}{ralign 21:Number of obs}{col 22} {c |} {col 23}{res}      676{col 37}      576{col 61}{txt}BW type       = {res}{ralign 10:CV}
+{txt}{ralign 21:Order loc. poly. (p)}{col 22} {c |} {col 23}{res}        1{col 37}        1{col 61}{txt}Kernel type   = {res}{ralign 10:Triangular}
+{txt}{ralign 21:Order bias (q)}{col 22} {c |} {col 23}{res}        2{col 37}        2
+{txt}{ralign 21:BW loc. poly. (h)}{col 22} {c |} {col 23}{res}  465.100{col 37}  465.100
+{txt}{ralign 21:BW bias (b)}{col 22} {c |} {col 23}{res}  465.100{col 37}  465.100
+{txt}{ralign 21:rho (h/b)}{col 22} {c |} {col 23}{res}    1.000{col 37}    1.000
+
+Outcome: saldofinanziario_pc. Running variable: pop5000.
+{txt}{hline 22}{c TT}{hline 63}
+{ralign 21:Method}{col 22} {c |} {col 28}Coef.{col 36}Std. Err.{col 50}z{col 57}P>|z|{col 67}[95% Conf. Interval]
+{hline 22}{c +}{hline 63}
+{ralign 21:Conventional}{col 22} {c |} {col 26}{res}-55.503{col 36} 19.897{col 47}-2.7895{col 57}0.005{col 68}-94.5003{col 79}-16.5055
+{txt}{ralign 21:Robust}{col 22} {c |} {col 26}{res}    -{col 36}    -{col 47}-2.5013{col 57}0.012{col 68}-157.717{col 79}-19.1363
+{txt}{hline 22}{c BT}{hline 63}
+
+{res}Preparing data.
+Computing bandwidth selectors.
+Computing variance-covariance matrix.
+Computing RD estimates.
+Estimation completed.
+
+Sharp RD estimates using local polynomial regression.
+
+{txt}{ralign 21: Cutoff c = 0}{col 22} {c |} {col 23}Left of {res}c{col 36}{txt}Right of {res}c{col 61}{txt}Number of obs = {res}      2100
+{txt}{hline 22}{c +}{hline 22}{col 61}NN matches    = {res}         3
+{txt}{ralign 21:Number of obs}{col 22} {c |} {col 23}{res}     1016{col 37}      668{col 61}{txt}BW type       = {res}{ralign 10:CV}
+{txt}{ralign 21:Order loc. poly. (p)}{col 22} {c |} {col 23}{res}        1{col 37}        1{col 61}{txt}Kernel type   = {res}{ralign 10:Triangular}
+{txt}{ralign 21:Order bias (q)}{col 22} {c |} {col 23}{res}        2{col 37}        2
+{txt}{ralign 21:BW loc. poly. (h)}{col 22} {c |} {col 23}{res} 1201.400{col 37} 1201.400
+{txt}{ralign 21:BW bias (b)}{col 22} {c |} {col 23}{res} 1201.400{col 37} 1201.400
+{txt}{ralign 21:rho (h/b)}{col 22} {c |} {col 23}{res}    1.000{col 37}    1.000
+
+Outcome: saldofinanziario_pc. Running variable: pop5000.
+{txt}{hline 22}{c TT}{hline 63}
+{ralign 21:Method}{col 22} {c |} {col 28}Coef.{col 36}Std. Err.{col 50}z{col 57}P>|z|{col 67}[95% Conf. Interval]
+{hline 22}{c +}{hline 63}
+{ralign 21:Conventional}{col 22} {c |} {col 26}{res} 31.615{col 36} 11.551{col 47}2.7371{col 57}0.006{col 68} 8.97606{col 79} 54.2533
+{txt}{ralign 21:Robust}{col 22} {c |} {col 26}{res}    -{col 36}    -{col 47}2.6947{col 57}0.007{col 68} 12.6122{col 79} 79.8986
+{txt}{hline 22}{c BT}{hline 63}
+
+833.25
+
+Linear regression                               Number of obs     = {res}     2,136
+                                                {txt}F(7, 474)         =  {res}     9.24
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.0255
+                                                {txt}Root MSE          =    {res} 115.26
+
+{txt}{ralign 82:(Std. Err. adjusted for {res:475} clusters in id_codente)}
+{hline 17}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 18}{c |}{col 30}    Robust
+{col 1}saldofinanziar~c{col 18}{c |}      Coef.{col 30}   Std. Err.{col 42}      t{col 50}   P>|t|{col 58}     [95% Con{col 71}f. Interval]
+{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}treatment_t {c |}{col 18}{res}{space 2}  59.4679{col 30}{space 2}  32.0792{col 41}{space 1}    1.85{col 50}{space 3}0.064{col 58}{space 4}-3.567136{col 71}{space 3} 122.5029
+{txt}{space 11}t5000 {c |}{col 18}{res}{space 2} 33.87269{col 30}{space 2} 21.61687{col 41}{space 1}    1.57{col 50}{space 3}0.118{col 58}{space 4}-8.604054{col 71}{space 3} 76.34944
+{txt}{space 9}pop5000 {c |}{col 18}{res}{space 2}-.0141427{col 30}{space 2} .0419808{col 41}{space 1}   -0.34{col 50}{space 3}0.736{col 58}{space 4}-.0966342{col 71}{space 3} .0683489
+{txt}treatment_t_int1 {c |}{col 18}{res}{space 2}-.0309616{col 30}{space 2} .1012905{col 41}{space 1}   -0.31{col 50}{space 3}0.760{col 58}{space 4}-.2299955{col 71}{space 3} .1680723
+{txt}{space 6}t5000_int1 {c |}{col 18}{res}{space 2} -.053273{col 30}{space 2} .0718414{col 41}{space 1}   -0.74{col 50}{space 3}0.459{col 58}{space 4}  -.19444{col 71}{space 3} .0878939
+{txt}{space 9}postper {c |}{col 18}{res}{space 2} .6840548{col 30}{space 2} 21.97988{col 41}{space 1}    0.03{col 50}{space 3}0.975{col 58}{space 4}  -42.506{col 71}{space 3} 43.87411
+{txt}{space 4}postper_int1 {c |}{col 18}{res}{space 2} .0763794{col 30}{space 2} .0732688{col 41}{space 1}    1.04{col 50}{space 3}0.298{col 58}{space 4}-.0675925{col 71}{space 3} .2203513
+{txt}{space 11}_cons {c |}{col 18}{res}{space 2} 150.4568{col 30}{space 2} 12.12534{col 41}{space 1}   12.41{col 50}{space 3}0.000{col 58}{space 4} 126.6307{col 71}{space 3} 174.2829
+{txt}{hline 17}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{stata `"shellout using `"tab_base_saldofinanziario_pc.tex"'"':tab_base_saldofinanziario_pc.tex}
+{browse `"C:\Users\Anzony\Documents\GitHub\Advanced_Applied_Econometrics_QLAB_PUCP_2022_I\RD\Data\APP2015-0076_data\results"' :dir}{com} : {txt}{stata `"seeout using "tab_base_saldofinanziario_pc.txt""':seeout}
+
+Linear regression                               Number of obs     = {res}     3,438
+                                                {txt}F(7, 690)         =  {res}    17.28
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.0233
+                                                {txt}Root MSE          =    {res} 115.98
+
+{txt}{ralign 82:(Std. Err. adjusted for {res:691} clusters in id_codente)}
+{hline 17}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 18}{c |}{col 30}    Robust
+{col 1}saldofinanziar~c{col 18}{c |}      Coef.{col 30}   Std. Err.{col 42}      t{col 50}   P>|t|{col 58}     [95% Con{col 71}f. Interval]
+{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}treatment_t {c |}{col 18}{res}{space 2}  48.4689{col 30}{space 2} 23.31468{col 41}{space 1}    2.08{col 50}{space 3}0.038{col 58}{space 4} 2.692669{col 71}{space 3} 94.24513
+{txt}{space 11}t5000 {c |}{col 18}{res}{space 2} 30.77936{col 30}{space 2} 16.60454{col 41}{space 1}    1.85{col 50}{space 3}0.064{col 58}{space 4}-1.822126{col 71}{space 3} 63.38085
+{txt}{space 9}pop5000 {c |}{col 18}{res}{space 2}-.0173333{col 30}{space 2} .0219954{col 41}{space 1}   -0.79{col 50}{space 3}0.431{col 58}{space 4}-.0605192{col 71}{space 3} .0258526
+{txt}treatment_t_int1 {c |}{col 18}{res}{space 2} -.007489{col 30}{space 2} .0486507{col 41}{space 1}   -0.15{col 50}{space 3}0.878{col 58}{space 4}  -.10301{col 71}{space 3} .0880321
+{txt}{space 6}t5000_int1 {c |}{col 18}{res}{space 2}-.0346293{col 30}{space 2} .0346132{col 41}{space 1}   -1.00{col 50}{space 3}0.317{col 58}{space 4}-.1025892{col 71}{space 3} .0333305
+{txt}{space 9}postper {c |}{col 18}{res}{space 2} 7.946272{col 30}{space 2} 15.80134{col 41}{space 1}    0.50{col 50}{space 3}0.615{col 58}{space 4} -23.0782{col 71}{space 3} 38.97075
+{txt}{space 4}postper_int1 {c |}{col 18}{res}{space 2} .0410364{col 30}{space 2} .0349194{col 41}{space 1}    1.18{col 50}{space 3}0.240{col 58}{space 4}-.0275246{col 71}{space 3} .1095974
+{txt}{space 11}_cons {c |}{col 18}{res}{space 2} 151.0847{col 30}{space 2} 9.940417{col 41}{space 1}   15.20{col 50}{space 3}0.000{col 58}{space 4} 131.5676{col 71}{space 3} 170.6018
+{txt}{hline 17}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{stata `"shellout using `"tab_base_saldofinanziario_pc.tex"'"':tab_base_saldofinanziario_pc.tex}
+{browse `"C:\Users\Anzony\Documents\GitHub\Advanced_Applied_Econometrics_QLAB_PUCP_2022_I\RD\Data\APP2015-0076_data\results"' :dir}{com} : {txt}{stata `"seeout using "tab_base_saldofinanziario_pc.txt""':seeout}
+
+{com}. 
+{txt}end of do-file
+
+{com}. tab pop5000
+
+    {txt}pop5000 {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+      -1500 {c |}{res}          4        0.06        0.06
+{txt}      -1499 {c |}{res}          2        0.03        0.10
+{txt}      -1496 {c |}{res}          2        0.03        0.13
+{txt}      -1491 {c |}{res}          2        0.03        0.16
+{txt}      -1489 {c |}{res}          4        0.06        0.22
+{txt}      -1488 {c |}{res}          4        0.06        0.29
+{txt}      -1487 {c |}{res}          4        0.06        0.35
+{txt}      -1486 {c |}{res}          2        0.03        0.38
+{txt}      -1484 {c |}{res}          8        0.13        0.51
+{txt}      -1483 {c |}{res}          2        0.03        0.54
+{txt}      -1482 {c |}{res}          2        0.03        0.57
+{txt}      -1481 {c |}{res}          4        0.06        0.63
+{txt}      -1480 {c |}{res}          2        0.03        0.67
+{txt}      -1479 {c |}{res}          2        0.03        0.70
+{txt}      -1478 {c |}{res}          4        0.06        0.76
+{txt}      -1470 {c |}{res}          2        0.03        0.79
+{txt}      -1465 {c |}{res}          4        0.06        0.86
+{txt}      -1463 {c |}{res}          2        0.03        0.89
+{txt}      -1462 {c |}{res}          2        0.03        0.92
+{txt}      -1461 {c |}{res}          4        0.06        0.98
+{txt}      -1460 {c |}{res}          6        0.10        1.08
+{txt}      -1459 {c |}{res}          4        0.06        1.14
+{txt}      -1458 {c |}{res}          2        0.03        1.17
+{txt}      -1456 {c |}{res}          2        0.03        1.21
+{txt}      -1451 {c |}{res}          6        0.10        1.30
+{txt}      -1450 {c |}{res}          2        0.03        1.33
+{txt}      -1447 {c |}{res}          2        0.03        1.37
+{txt}      -1445 {c |}{res}          2        0.03        1.40
+{txt}      -1444 {c |}{res}          2        0.03        1.43
+{txt}      -1442 {c |}{res}          2        0.03        1.46
+{txt}      -1439 {c |}{res}          2        0.03        1.49
+{txt}      -1438 {c |}{res}          4        0.06        1.56
+{txt}      -1436 {c |}{res}         10        0.16        1.71
+{txt}      -1434 {c |}{res}          2        0.03        1.75
+{txt}      -1433 {c |}{res}          4        0.06        1.81
+{txt}      -1429 {c |}{res}          2        0.03        1.84
+{txt}      -1428 {c |}{res}          2        0.03        1.87
+{txt}      -1422 {c |}{res}          2        0.03        1.90
+{txt}      -1419 {c |}{res}          2        0.03        1.94
+{txt}      -1415 {c |}{res}          6        0.10        2.03
+{txt}      -1414 {c |}{res}          4        0.06        2.10
+{txt}      -1413 {c |}{res}          8        0.13        2.22
+{txt}      -1411 {c |}{res}          6        0.10        2.32
+{txt}      -1410 {c |}{res}          2        0.03        2.35
+{txt}      -1402 {c |}{res}          4        0.06        2.41
+{txt}      -1394 {c |}{res}          2        0.03        2.44
+{txt}      -1392 {c |}{res}          2        0.03        2.48
+{txt}      -1391 {c |}{res}          2        0.03        2.51
+{txt}      -1390 {c |}{res}          2        0.03        2.54
+{txt}      -1389 {c |}{res}          2        0.03        2.57
+{txt}      -1386 {c |}{res}          2        0.03        2.60
+{txt}      -1384 {c |}{res}          4        0.06        2.67
+{txt}      -1383 {c |}{res}          4        0.06        2.73
+{txt}      -1380 {c |}{res}          6        0.10        2.83
+{txt}      -1378 {c |}{res}          2        0.03        2.86
+{txt}      -1377 {c |}{res}          4        0.06        2.92
+{txt}      -1374 {c |}{res}          4        0.06        2.98
+{txt}      -1372 {c |}{res}          4        0.06        3.05
+{txt}      -1371 {c |}{res}          2        0.03        3.08
+{txt}      -1370 {c |}{res}          2        0.03        3.11
+{txt}      -1369 {c |}{res}          6        0.10        3.21
+{txt}      -1368 {c |}{res}          4        0.06        3.27
+{txt}      -1365 {c |}{res}          2        0.03        3.30
+{txt}      -1361 {c |}{res}          6        0.10        3.40
+{txt}      -1357 {c |}{res}          2        0.03        3.43
+{txt}      -1355 {c |}{res}          4        0.06        3.49
+{txt}      -1351 {c |}{res}          2        0.03        3.52
+{txt}      -1347 {c |}{res}          2        0.03        3.56
+{txt}      -1340 {c |}{res}          4        0.06        3.62
+{txt}      -1339 {c |}{res}          4        0.06        3.68
+{txt}      -1337 {c |}{res}          2        0.03        3.71
+{txt}      -1336 {c |}{res}          4        0.06        3.78
+{txt}      -1334 {c |}{res}          4        0.06        3.84
+{txt}      -1333 {c |}{res}          2        0.03        3.87
+{txt}      -1332 {c |}{res}          4        0.06        3.94
+{txt}      -1331 {c |}{res}          2        0.03        3.97
+{txt}      -1330 {c |}{res}          4        0.06        4.03
+{txt}      -1328 {c |}{res}          2        0.03        4.06
+{txt}      -1326 {c |}{res}          4        0.06        4.13
+{txt}      -1324 {c |}{res}          2        0.03        4.16
+{txt}      -1323 {c |}{res}          2        0.03        4.19
+{txt}      -1321 {c |}{res}          2        0.03        4.22
+{txt}      -1320 {c |}{res}          2        0.03        4.25
+{txt}      -1315 {c |}{res}          4        0.06        4.32
+{txt}      -1314 {c |}{res}          2        0.03        4.35
+{txt}      -1313 {c |}{res}          6        0.10        4.44
+{txt}      -1312 {c |}{res}          6        0.10        4.54
+{txt}      -1311 {c |}{res}          2        0.03        4.57
+{txt}      -1309 {c |}{res}          6        0.10        4.67
+{txt}      -1308 {c |}{res}          4        0.06        4.73
+{txt}      -1303 {c |}{res}          4        0.06        4.79
+{txt}      -1302 {c |}{res}          2        0.03        4.83
+{txt}      -1301 {c |}{res}          4        0.06        4.89
+{txt}      -1300 {c |}{res}          2        0.03        4.92
+{txt}      -1298 {c |}{res}          4        0.06        4.98
+{txt}      -1296 {c |}{res}          6        0.10        5.08
+{txt}      -1295 {c |}{res}          4        0.06        5.14
+{txt}      -1294 {c |}{res}          4        0.06        5.21
+{txt}      -1289 {c |}{res}          2        0.03        5.24
+{txt}      -1288 {c |}{res}          2        0.03        5.27
+{txt}      -1287 {c |}{res}          8        0.13        5.40
+{txt}      -1286 {c |}{res}          4        0.06        5.46
+{txt}      -1285 {c |}{res}          2        0.03        5.49
+{txt}      -1284 {c |}{res}         10        0.16        5.65
+{txt}      -1283 {c |}{res}          4        0.06        5.71
+{txt}      -1282 {c |}{res}         12        0.19        5.90
+{txt}      -1281 {c |}{res}         12        0.19        6.10
+{txt}      -1280 {c |}{res}          4        0.06        6.16
+{txt}      -1278 {c |}{res}          4        0.06        6.22
+{txt}      -1276 {c |}{res}          2        0.03        6.25
+{txt}      -1274 {c |}{res}          4        0.06        6.32
+{txt}      -1273 {c |}{res}          6        0.10        6.41
+{txt}      -1269 {c |}{res}          4        0.06        6.48
+{txt}      -1267 {c |}{res}          4        0.06        6.54
+{txt}      -1263 {c |}{res}          2        0.03        6.57
+{txt}      -1262 {c |}{res}          2        0.03        6.60
+{txt}      -1261 {c |}{res}          2        0.03        6.63
+{txt}      -1260 {c |}{res}          2        0.03        6.67
+{txt}      -1258 {c |}{res}          4        0.06        6.73
+{txt}      -1255 {c |}{res}          8        0.13        6.86
+{txt}      -1252 {c |}{res}          4        0.06        6.92
+{txt}      -1251 {c |}{res}          6        0.10        7.02
+{txt}      -1250 {c |}{res}         10        0.16        7.17
+{txt}      -1249 {c |}{res}          2        0.03        7.21
+{txt}      -1248 {c |}{res}          8        0.13        7.33
+{txt}      -1247 {c |}{res}          8        0.13        7.46
+{txt}      -1242 {c |}{res}          6        0.10        7.56
+{txt}      -1241 {c |}{res}          6        0.10        7.65
+{txt}      -1239 {c |}{res}          4        0.06        7.71
+{txt}      -1238 {c |}{res}          4        0.06        7.78
+{txt}      -1237 {c |}{res}          4        0.06        7.84
+{txt}      -1236 {c |}{res}          4        0.06        7.90
+{txt}      -1234 {c |}{res}          2        0.03        7.94
+{txt}      -1233 {c |}{res}          4        0.06        8.00
+{txt}      -1229 {c |}{res}          8        0.13        8.13
+{txt}      -1228 {c |}{res}          4        0.06        8.19
+{txt}      -1226 {c |}{res}          4        0.06        8.25
+{txt}      -1224 {c |}{res}          4        0.06        8.32
+{txt}      -1223 {c |}{res}          6        0.10        8.41
+{txt}      -1222 {c |}{res}         12        0.19        8.60
+{txt}      -1221 {c |}{res}          4        0.06        8.67
+{txt}      -1220 {c |}{res}          2        0.03        8.70
+{txt}      -1219 {c |}{res}          4        0.06        8.76
+{txt}      -1216 {c |}{res}          6        0.10        8.86
+{txt}      -1214 {c |}{res}          2        0.03        8.89
+{txt}      -1213 {c |}{res}          4        0.06        8.95
+{txt}      -1211 {c |}{res}          2        0.03        8.98
+{txt}      -1208 {c |}{res}          6        0.10        9.08
+{txt}      -1207 {c |}{res}          2        0.03        9.11
+{txt}      -1206 {c |}{res}         10        0.16        9.27
+{txt}      -1205 {c |}{res}          4        0.06        9.33
+{txt}      -1204 {c |}{res}          4        0.06        9.40
+{txt}      -1203 {c |}{res}          4        0.06        9.46
+{txt}      -1202 {c |}{res}          4        0.06        9.52
+{txt}      -1201 {c |}{res}          6        0.10        9.62
+{txt}      -1200 {c |}{res}          4        0.06        9.68
+{txt}      -1197 {c |}{res}          8        0.13        9.81
+{txt}      -1192 {c |}{res}          2        0.03        9.84
+{txt}      -1190 {c |}{res}          4        0.06        9.90
+{txt}      -1189 {c |}{res}          2        0.03        9.94
+{txt}      -1187 {c |}{res}          2        0.03        9.97
+{txt}      -1186 {c |}{res}          2        0.03       10.00
+{txt}      -1184 {c |}{res}          4        0.06       10.06
+{txt}      -1182 {c |}{res}          4        0.06       10.13
+{txt}      -1180 {c |}{res}          4        0.06       10.19
+{txt}      -1179 {c |}{res}          2        0.03       10.22
+{txt}      -1177 {c |}{res}          4        0.06       10.29
+{txt}      -1176 {c |}{res}          2        0.03       10.32
+{txt}      -1174 {c |}{res}          2        0.03       10.35
+{txt}      -1171 {c |}{res}          4        0.06       10.41
+{txt}      -1169 {c |}{res}          6        0.10       10.51
+{txt}      -1168 {c |}{res}          4        0.06       10.57
+{txt}      -1167 {c |}{res}         14        0.22       10.79
+{txt}      -1166 {c |}{res}          4        0.06       10.86
+{txt}      -1164 {c |}{res}          4        0.06       10.92
+{txt}      -1163 {c |}{res}          4        0.06       10.98
+{txt}      -1157 {c |}{res}          4        0.06       11.05
+{txt}      -1156 {c |}{res}          2        0.03       11.08
+{txt}      -1155 {c |}{res}          4        0.06       11.14
+{txt}      -1154 {c |}{res}          4        0.06       11.21
+{txt}      -1152 {c |}{res}          4        0.06       11.27
+{txt}      -1151 {c |}{res}          4        0.06       11.33
+{txt}      -1149 {c |}{res}          4        0.06       11.40
+{txt}      -1147 {c |}{res}          2        0.03       11.43
+{txt}      -1145 {c |}{res}          2        0.03       11.46
+{txt}      -1144 {c |}{res}          6        0.10       11.56
+{txt}      -1142 {c |}{res}          6        0.10       11.65
+{txt}      -1140 {c |}{res}          4        0.06       11.71
+{txt}      -1134 {c |}{res}         10        0.16       11.87
+{txt}      -1132 {c |}{res}          6        0.10       11.97
+{txt}      -1130 {c |}{res}          4        0.06       12.03
+{txt}      -1129 {c |}{res}          8        0.13       12.16
+{txt}      -1128 {c |}{res}          2        0.03       12.19
+{txt}      -1127 {c |}{res}          4        0.06       12.25
+{txt}      -1123 {c |}{res}          4        0.06       12.32
+{txt}      -1121 {c |}{res}          4        0.06       12.38
+{txt}      -1118 {c |}{res}         10        0.16       12.54
+{txt}      -1116 {c |}{res}          2        0.03       12.57
+{txt}      -1114 {c |}{res}          4        0.06       12.63
+{txt}      -1113 {c |}{res}          4        0.06       12.70
+{txt}      -1112 {c |}{res}          4        0.06       12.76
+{txt}      -1110 {c |}{res}          2        0.03       12.79
+{txt}      -1108 {c |}{res}          4        0.06       12.86
+{txt}      -1105 {c |}{res}          4        0.06       12.92
+{txt}      -1103 {c |}{res}          4        0.06       12.98
+{txt}      -1097 {c |}{res}          2        0.03       13.02
+{txt}      -1096 {c |}{res}          4        0.06       13.08
+{txt}      -1095 {c |}{res}          4        0.06       13.14
+{txt}      -1094 {c |}{res}          2        0.03       13.17
+{txt}      -1092 {c |}{res}          4        0.06       13.24
+{txt}      -1091 {c |}{res}          2        0.03       13.27
+{txt}      -1090 {c |}{res}          2        0.03       13.30
+{txt}      -1088 {c |}{res}          2        0.03       13.33
+{txt}      -1086 {c |}{res}          4        0.06       13.40
+{txt}      -1085 {c |}{res}          4        0.06       13.46
+{txt}      -1083 {c |}{res}          2        0.03       13.49
+{txt}      -1082 {c |}{res}          2        0.03       13.52
+{txt}      -1081 {c |}{res}          4        0.06       13.59
+{txt}      -1075 {c |}{res}          2        0.03       13.62
+{txt}      -1074 {c |}{res}          4        0.06       13.68
+{txt}      -1073 {c |}{res}          4        0.06       13.75
+{txt}      -1071 {c |}{res}          4        0.06       13.81
+{txt}      -1069 {c |}{res}          4        0.06       13.87
+{txt}      -1067 {c |}{res}          2        0.03       13.90
+{txt}      -1066 {c |}{res}          2        0.03       13.94
+{txt}      -1065 {c |}{res}          4        0.06       14.00
+{txt}      -1064 {c |}{res}          2        0.03       14.03
+{txt}      -1062 {c |}{res}          2        0.03       14.06
+{txt}      -1061 {c |}{res}          6        0.10       14.16
+{txt}      -1060 {c |}{res}          2        0.03       14.19
+{txt}      -1059 {c |}{res}          2        0.03       14.22
+{txt}      -1058 {c |}{res}          4        0.06       14.29
+{txt}      -1057 {c |}{res}          2        0.03       14.32
+{txt}      -1055 {c |}{res}          6        0.10       14.41
+{txt}      -1054 {c |}{res}          4        0.06       14.48
+{txt}      -1053 {c |}{res}          4        0.06       14.54
+{txt}      -1051 {c |}{res}          6        0.10       14.63
+{txt}      -1049 {c |}{res}          6        0.10       14.73
+{txt}      -1048 {c |}{res}          6        0.10       14.83
+{txt}      -1047 {c |}{res}          2        0.03       14.86
+{txt}      -1044 {c |}{res}          2        0.03       14.89
+{txt}      -1042 {c |}{res}          2        0.03       14.92
+{txt}      -1040 {c |}{res}          4        0.06       14.98
+{txt}      -1038 {c |}{res}          2        0.03       15.02
+{txt}      -1034 {c |}{res}          2        0.03       15.05
+{txt}      -1033 {c |}{res}          4        0.06       15.11
+{txt}      -1032 {c |}{res}          4        0.06       15.17
+{txt}      -1031 {c |}{res}          4        0.06       15.24
+{txt}      -1030 {c |}{res}          4        0.06       15.30
+{txt}      -1027 {c |}{res}          4        0.06       15.37
+{txt}      -1025 {c |}{res}          2        0.03       15.40
+{txt}      -1024 {c |}{res}          2        0.03       15.43
+{txt}      -1023 {c |}{res}          8        0.13       15.56
+{txt}      -1022 {c |}{res}          2        0.03       15.59
+{txt}      -1020 {c |}{res}          2        0.03       15.62
+{txt}      -1019 {c |}{res}          4        0.06       15.68
+{txt}      -1018 {c |}{res}          2        0.03       15.71
+{txt}      -1017 {c |}{res}          4        0.06       15.78
+{txt}      -1015 {c |}{res}          6        0.10       15.87
+{txt}      -1013 {c |}{res}          4        0.06       15.94
+{txt}      -1012 {c |}{res}          8        0.13       16.06
+{txt}      -1009 {c |}{res}          4        0.06       16.13
+{txt}      -1008 {c |}{res}          4        0.06       16.19
+{txt}      -1007 {c |}{res}          2        0.03       16.22
+{txt}      -1006 {c |}{res}          4        0.06       16.29
+{txt}      -1005 {c |}{res}          6        0.10       16.38
+{txt}      -1003 {c |}{res}          4        0.06       16.44
+{txt}      -1002 {c |}{res}          6        0.10       16.54
+{txt}      -1001 {c |}{res}          6        0.10       16.63
+{txt}       -998 {c |}{res}          2        0.03       16.67
+{txt}       -997 {c |}{res}          2        0.03       16.70
+{txt}       -995 {c |}{res}          6        0.10       16.79
+{txt}       -994 {c |}{res}         10        0.16       16.95
+{txt}       -993 {c |}{res}          2        0.03       16.98
+{txt}       -991 {c |}{res}          2        0.03       17.02
+{txt}       -990 {c |}{res}          4        0.06       17.08
+{txt}       -984 {c |}{res}          2        0.03       17.11
+{txt}       -982 {c |}{res}          2        0.03       17.14
+{txt}       -981 {c |}{res}          4        0.06       17.21
+{txt}       -980 {c |}{res}          4        0.06       17.27
+{txt}       -978 {c |}{res}          8        0.13       17.40
+{txt}       -977 {c |}{res}          8        0.13       17.52
+{txt}       -975 {c |}{res}          6        0.10       17.62
+{txt}       -974 {c |}{res}          2        0.03       17.65
+{txt}       -973 {c |}{res}          4        0.06       17.71
+{txt}       -972 {c |}{res}          4        0.06       17.78
+{txt}       -971 {c |}{res}          4        0.06       17.84
+{txt}       -968 {c |}{res}          6        0.10       17.94
+{txt}       -966 {c |}{res}          4        0.06       18.00
+{txt}       -965 {c |}{res}          8        0.13       18.13
+{txt}       -963 {c |}{res}          4        0.06       18.19
+{txt}       -961 {c |}{res}          4        0.06       18.25
+{txt}       -960 {c |}{res}          2        0.03       18.29
+{txt}       -959 {c |}{res}          2        0.03       18.32
+{txt}       -958 {c |}{res}          2        0.03       18.35
+{txt}       -950 {c |}{res}          4        0.06       18.41
+{txt}       -948 {c |}{res}          2        0.03       18.44
+{txt}       -947 {c |}{res}          2        0.03       18.48
+{txt}       -945 {c |}{res}          6        0.10       18.57
+{txt}       -944 {c |}{res}          2        0.03       18.60
+{txt}       -943 {c |}{res}          2        0.03       18.63
+{txt}       -942 {c |}{res}          2        0.03       18.67
+{txt}       -940 {c |}{res}          4        0.06       18.73
+{txt}       -939 {c |}{res}          2        0.03       18.76
+{txt}       -935 {c |}{res}          6        0.10       18.86
+{txt}       -934 {c |}{res}          6        0.10       18.95
+{txt}       -933 {c |}{res}          4        0.06       19.02
+{txt}       -932 {c |}{res}         10        0.16       19.17
+{txt}       -931 {c |}{res}          2        0.03       19.21
+{txt}       -927 {c |}{res}          8        0.13       19.33
+{txt}       -926 {c |}{res}          6        0.10       19.43
+{txt}       -925 {c |}{res}          6        0.10       19.52
+{txt}       -924 {c |}{res}          4        0.06       19.59
+{txt}       -922 {c |}{res}          4        0.06       19.65
+{txt}       -920 {c |}{res}          6        0.10       19.75
+{txt}       -918 {c |}{res}          6        0.10       19.84
+{txt}       -916 {c |}{res}          4        0.06       19.90
+{txt}       -915 {c |}{res}          2        0.03       19.94
+{txt}       -914 {c |}{res}          4        0.06       20.00
+{txt}       -913 {c |}{res}          4        0.06       20.06
+{txt}       -912 {c |}{res}          4        0.06       20.13
+{txt}       -910 {c |}{res}          4        0.06       20.19
+{txt}       -908 {c |}{res}          4        0.06       20.25
+{txt}       -907 {c |}{res}          4        0.06       20.32
+{txt}       -904 {c |}{res}          6        0.10       20.41
+{txt}       -903 {c |}{res}          6        0.10       20.51
+{txt}       -902 {c |}{res}          4        0.06       20.57
+{txt}       -896 {c |}{res}          2        0.03       20.60
+{txt}       -895 {c |}{res}          4        0.06       20.67
+{txt}       -894 {c |}{res}          8        0.13       20.79
+{txt}       -893 {c |}{res}          4        0.06       20.86
+{txt}       -892 {c |}{res}          4        0.06       20.92
+{txt}       -891 {c |}{res}          2        0.03       20.95
+{txt}       -890 {c |}{res}          2        0.03       20.98
+{txt}       -889 {c |}{res}         12        0.19       21.17
+{txt}       -888 {c |}{res}          2        0.03       21.21
+{txt}       -887 {c |}{res}          4        0.06       21.27
+{txt}       -886 {c |}{res}          4        0.06       21.33
+{txt}       -885 {c |}{res}         10        0.16       21.49
+{txt}       -884 {c |}{res}          2        0.03       21.52
+{txt}       -883 {c |}{res}          6        0.10       21.62
+{txt}       -881 {c |}{res}          6        0.10       21.71
+{txt}       -880 {c |}{res}          4        0.06       21.78
+{txt}       -878 {c |}{res}          8        0.13       21.90
+{txt}       -876 {c |}{res}          4        0.06       21.97
+{txt}       -874 {c |}{res}          8        0.13       22.10
+{txt}       -873 {c |}{res}          2        0.03       22.13
+{txt}       -872 {c |}{res}          4        0.06       22.19
+{txt}       -870 {c |}{res}          2        0.03       22.22
+{txt}       -869 {c |}{res}         12        0.19       22.41
+{txt}       -868 {c |}{res}          4        0.06       22.48
+{txt}       -867 {c |}{res}          4        0.06       22.54
+{txt}       -866 {c |}{res}         10        0.16       22.70
+{txt}       -864 {c |}{res}          2        0.03       22.73
+{txt}       -863 {c |}{res}          4        0.06       22.79
+{txt}       -861 {c |}{res}          2        0.03       22.83
+{txt}       -860 {c |}{res}          4        0.06       22.89
+{txt}       -859 {c |}{res}          8        0.13       23.02
+{txt}       -858 {c |}{res}          2        0.03       23.05
+{txt}       -857 {c |}{res}          6        0.10       23.14
+{txt}       -856 {c |}{res}          2        0.03       23.17
+{txt}       -855 {c |}{res}          4        0.06       23.24
+{txt}       -853 {c |}{res}          8        0.13       23.37
+{txt}       -850 {c |}{res}          6        0.10       23.46
+{txt}       -849 {c |}{res}          4        0.06       23.52
+{txt}       -848 {c |}{res}          4        0.06       23.59
+{txt}       -845 {c |}{res}          6        0.10       23.68
+{txt}       -842 {c |}{res}          2        0.03       23.71
+{txt}       -841 {c |}{res}          2        0.03       23.75
+{txt}       -840 {c |}{res}          2        0.03       23.78
+{txt}       -837 {c |}{res}          4        0.06       23.84
+{txt}       -834 {c |}{res}          4        0.06       23.90
+{txt}       -831 {c |}{res}          6        0.10       24.00
+{txt}       -830 {c |}{res}          4        0.06       24.06
+{txt}       -829 {c |}{res}         12        0.19       24.25
+{txt}       -828 {c |}{res}         10        0.16       24.41
+{txt}       -827 {c |}{res}          2        0.03       24.44
+{txt}       -825 {c |}{res}          2        0.03       24.48
+{txt}       -824 {c |}{res}          2        0.03       24.51
+{txt}       -823 {c |}{res}         12        0.19       24.70
+{txt}       -822 {c |}{res}          6        0.10       24.79
+{txt}       -821 {c |}{res}          6        0.10       24.89
+{txt}       -816 {c |}{res}         10        0.16       25.05
+{txt}       -815 {c |}{res}          4        0.06       25.11
+{txt}       -813 {c |}{res}          8        0.13       25.24
+{txt}       -811 {c |}{res}          4        0.06       25.30
+{txt}       -810 {c |}{res}          4        0.06       25.37
+{txt}       -808 {c |}{res}          4        0.06       25.43
+{txt}       -805 {c |}{res}          8        0.13       25.56
+{txt}       -804 {c |}{res}          4        0.06       25.62
+{txt}       -803 {c |}{res}          8        0.13       25.75
+{txt}       -802 {c |}{res}          4        0.06       25.81
+{txt}       -801 {c |}{res}          2        0.03       25.84
+{txt}       -800 {c |}{res}          6        0.10       25.94
+{txt}       -798 {c |}{res}          2        0.03       25.97
+{txt}       -795 {c |}{res}          2        0.03       26.00
+{txt}       -794 {c |}{res}          2        0.03       26.03
+{txt}       -793 {c |}{res}          4        0.06       26.10
+{txt}       -785 {c |}{res}          2        0.03       26.13
+{txt}       -784 {c |}{res}          8        0.13       26.25
+{txt}       -779 {c |}{res}          2        0.03       26.29
+{txt}       -778 {c |}{res}          2        0.03       26.32
+{txt}       -776 {c |}{res}          4        0.06       26.38
+{txt}       -775 {c |}{res}          8        0.13       26.51
+{txt}       -772 {c |}{res}          8        0.13       26.63
+{txt}       -771 {c |}{res}          4        0.06       26.70
+{txt}       -770 {c |}{res}          2        0.03       26.73
+{txt}       -769 {c |}{res}          8        0.13       26.86
+{txt}       -768 {c |}{res}          2        0.03       26.89
+{txt}       -767 {c |}{res}          4        0.06       26.95
+{txt}       -766 {c |}{res}          4        0.06       27.02
+{txt}       -765 {c |}{res}          2        0.03       27.05
+{txt}       -762 {c |}{res}          2        0.03       27.08
+{txt}       -761 {c |}{res}          2        0.03       27.11
+{txt}       -760 {c |}{res}          4        0.06       27.17
+{txt}       -759 {c |}{res}          4        0.06       27.24
+{txt}       -758 {c |}{res}          2        0.03       27.27
+{txt}       -756 {c |}{res}         10        0.16       27.43
+{txt}       -754 {c |}{res}          8        0.13       27.56
+{txt}       -751 {c |}{res}         10        0.16       27.71
+{txt}       -748 {c |}{res}          6        0.10       27.81
+{txt}       -747 {c |}{res}          4        0.06       27.87
+{txt}       -746 {c |}{res}          4        0.06       27.94
+{txt}       -745 {c |}{res}          2        0.03       27.97
+{txt}       -744 {c |}{res}          2        0.03       28.00
+{txt}       -743 {c |}{res}          2        0.03       28.03
+{txt}       -742 {c |}{res}          2        0.03       28.06
+{txt}       -740 {c |}{res}          2        0.03       28.10
+{txt}       -739 {c |}{res}          2        0.03       28.13
+{txt}       -738 {c |}{res}          4        0.06       28.19
+{txt}       -737 {c |}{res}          4        0.06       28.25
+{txt}       -736 {c |}{res}          6        0.10       28.35
+{txt}       -735 {c |}{res}          4        0.06       28.41
+{txt}       -732 {c |}{res}          4        0.06       28.48
+{txt}       -728 {c |}{res}          6        0.10       28.57
+{txt}       -727 {c |}{res}          4        0.06       28.63
+{txt}       -726 {c |}{res}          4        0.06       28.70
+{txt}       -725 {c |}{res}          4        0.06       28.76
+{txt}       -724 {c |}{res}         10        0.16       28.92
+{txt}       -723 {c |}{res}          8        0.13       29.05
+{txt}       -721 {c |}{res}          6        0.10       29.14
+{txt}       -719 {c |}{res}          6        0.10       29.24
+{txt}       -718 {c |}{res}          2        0.03       29.27
+{txt}       -713 {c |}{res}          2        0.03       29.30
+{txt}       -712 {c |}{res}          4        0.06       29.37
+{txt}       -711 {c |}{res}          2        0.03       29.40
+{txt}       -709 {c |}{res}          6        0.10       29.49
+{txt}       -708 {c |}{res}          4        0.06       29.56
+{txt}       -704 {c |}{res}          6        0.10       29.65
+{txt}       -698 {c |}{res}          4        0.06       29.71
+{txt}       -695 {c |}{res}          6        0.10       29.81
+{txt}       -693 {c |}{res}          2        0.03       29.84
+{txt}       -692 {c |}{res}          4        0.06       29.90
+{txt}       -690 {c |}{res}          4        0.06       29.97
+{txt}       -689 {c |}{res}          2        0.03       30.00
+{txt}       -688 {c |}{res}          6        0.10       30.10
+{txt}       -686 {c |}{res}          2        0.03       30.13
+{txt}       -685 {c |}{res}          2        0.03       30.16
+{txt}       -682 {c |}{res}          6        0.10       30.25
+{txt}       -680 {c |}{res}          8        0.13       30.38
+{txt}       -676 {c |}{res}          4        0.06       30.44
+{txt}       -675 {c |}{res}          4        0.06       30.51
+{txt}       -672 {c |}{res}          4        0.06       30.57
+{txt}       -670 {c |}{res}          2        0.03       30.60
+{txt}       -669 {c |}{res}          4        0.06       30.67
+{txt}       -665 {c |}{res}          4        0.06       30.73
+{txt}       -662 {c |}{res}          4        0.06       30.79
+{txt}       -661 {c |}{res}          4        0.06       30.86
+{txt}       -659 {c |}{res}          4        0.06       30.92
+{txt}       -658 {c |}{res}          4        0.06       30.98
+{txt}       -655 {c |}{res}          6        0.10       31.08
+{txt}       -653 {c |}{res}          8        0.13       31.21
+{txt}       -652 {c |}{res}          8        0.13       31.33
+{txt}       -651 {c |}{res}          6        0.10       31.43
+{txt}       -650 {c |}{res}         10        0.16       31.59
+{txt}       -649 {c |}{res}          6        0.10       31.68
+{txt}       -647 {c |}{res}          4        0.06       31.75
+{txt}       -644 {c |}{res}         10        0.16       31.90
+{txt}       -643 {c |}{res}          4        0.06       31.97
+{txt}       -642 {c |}{res}          4        0.06       32.03
+{txt}       -641 {c |}{res}          2        0.03       32.06
+{txt}       -639 {c |}{res}          4        0.06       32.13
+{txt}       -637 {c |}{res}          2        0.03       32.16
+{txt}       -634 {c |}{res}          6        0.10       32.25
+{txt}       -633 {c |}{res}         10        0.16       32.41
+{txt}       -632 {c |}{res}          2        0.03       32.44
+{txt}       -629 {c |}{res}          8        0.13       32.57
+{txt}       -626 {c |}{res}          2        0.03       32.60
+{txt}       -625 {c |}{res}          4        0.06       32.67
+{txt}       -624 {c |}{res}          2        0.03       32.70
+{txt}       -623 {c |}{res}          2        0.03       32.73
+{txt}       -621 {c |}{res}          8        0.13       32.86
+{txt}       -620 {c |}{res}          4        0.06       32.92
+{txt}       -619 {c |}{res}          2        0.03       32.95
+{txt}       -618 {c |}{res}          4        0.06       33.02
+{txt}       -616 {c |}{res}          2        0.03       33.05
+{txt}       -615 {c |}{res}          4        0.06       33.11
+{txt}       -614 {c |}{res}         10        0.16       33.27
+{txt}       -613 {c |}{res}          4        0.06       33.33
+{txt}       -612 {c |}{res}          2        0.03       33.37
+{txt}       -610 {c |}{res}          2        0.03       33.40
+{txt}       -609 {c |}{res}          8        0.13       33.52
+{txt}       -608 {c |}{res}          4        0.06       33.59
+{txt}       -607 {c |}{res}          2        0.03       33.62
+{txt}       -606 {c |}{res}          4        0.06       33.68
+{txt}       -605 {c |}{res}          2        0.03       33.71
+{txt}       -604 {c |}{res}          6        0.10       33.81
+{txt}       -603 {c |}{res}          2        0.03       33.84
+{txt}       -602 {c |}{res}          6        0.10       33.94
+{txt}       -601 {c |}{res}          4        0.06       34.00
+{txt}       -599 {c |}{res}          4        0.06       34.06
+{txt}       -597 {c |}{res}          4        0.06       34.13
+{txt}       -594 {c |}{res}          2        0.03       34.16
+{txt}       -592 {c |}{res}          8        0.13       34.29
+{txt}       -591 {c |}{res}          2        0.03       34.32
+{txt}       -589 {c |}{res}          2        0.03       34.35
+{txt}       -588 {c |}{res}          4        0.06       34.41
+{txt}       -586 {c |}{res}          4        0.06       34.48
+{txt}       -584 {c |}{res}          2        0.03       34.51
+{txt}       -581 {c |}{res}         12        0.19       34.70
+{txt}       -580 {c |}{res}          4        0.06       34.76
+{txt}       -576 {c |}{res}          4        0.06       34.83
+{txt}       -575 {c |}{res}          4        0.06       34.89
+{txt}       -574 {c |}{res}          4        0.06       34.95
+{txt}       -572 {c |}{res}          2        0.03       34.98
+{txt}       -571 {c |}{res}          6        0.10       35.08
+{txt}       -569 {c |}{res}          6        0.10       35.17
+{txt}       -568 {c |}{res}          2        0.03       35.21
+{txt}       -566 {c |}{res}          2        0.03       35.24
+{txt}       -565 {c |}{res}          6        0.10       35.33
+{txt}       -563 {c |}{res}          2        0.03       35.37
+{txt}       -561 {c |}{res}          2        0.03       35.40
+{txt}       -559 {c |}{res}          2        0.03       35.43
+{txt}       -557 {c |}{res}          2        0.03       35.46
+{txt}       -553 {c |}{res}          2        0.03       35.49
+{txt}       -552 {c |}{res}          4        0.06       35.56
+{txt}       -548 {c |}{res}          2        0.03       35.59
+{txt}       -547 {c |}{res}          2        0.03       35.62
+{txt}       -543 {c |}{res}          2        0.03       35.65
+{txt}       -542 {c |}{res}          4        0.06       35.71
+{txt}       -541 {c |}{res}          2        0.03       35.75
+{txt}       -540 {c |}{res}          2        0.03       35.78
+{txt}       -539 {c |}{res}          2        0.03       35.81
+{txt}       -537 {c |}{res}          6        0.10       35.90
+{txt}       -536 {c |}{res}          4        0.06       35.97
+{txt}       -531 {c |}{res}         12        0.19       36.16
+{txt}       -527 {c |}{res}          2        0.03       36.19
+{txt}       -523 {c |}{res}          4        0.06       36.25
+{txt}       -522 {c |}{res}          2        0.03       36.29
+{txt}       -519 {c |}{res}         12        0.19       36.48
+{txt}       -518 {c |}{res}          4        0.06       36.54
+{txt}       -516 {c |}{res}          4        0.06       36.60
+{txt}       -515 {c |}{res}          4        0.06       36.67
+{txt}       -510 {c |}{res}          2        0.03       36.70
+{txt}       -504 {c |}{res}          4        0.06       36.76
+{txt}       -502 {c |}{res}          6        0.10       36.86
+{txt}       -501 {c |}{res}          6        0.10       36.95
+{txt}       -500 {c |}{res}          2        0.03       36.98
+{txt}       -498 {c |}{res}          2        0.03       37.02
+{txt}       -497 {c |}{res}          6        0.10       37.11
+{txt}       -495 {c |}{res}          2        0.03       37.14
+{txt}       -494 {c |}{res}         12        0.19       37.33
+{txt}       -493 {c |}{res}          4        0.06       37.40
+{txt}       -491 {c |}{res}         10        0.16       37.56
+{txt}       -490 {c |}{res}          4        0.06       37.62
+{txt}       -489 {c |}{res}          6        0.10       37.71
+{txt}       -488 {c |}{res}          4        0.06       37.78
+{txt}       -485 {c |}{res}          2        0.03       37.81
+{txt}       -483 {c |}{res}          4        0.06       37.87
+{txt}       -482 {c |}{res}          4        0.06       37.94
+{txt}       -481 {c |}{res}          2        0.03       37.97
+{txt}       -480 {c |}{res}          4        0.06       38.03
+{txt}       -477 {c |}{res}          8        0.13       38.16
+{txt}       -476 {c |}{res}          4        0.06       38.22
+{txt}       -474 {c |}{res}          2        0.03       38.25
+{txt}       -473 {c |}{res}          4        0.06       38.32
+{txt}       -472 {c |}{res}          2        0.03       38.35
+{txt}       -471 {c |}{res}          6        0.10       38.44
+{txt}       -467 {c |}{res}          4        0.06       38.51
+{txt}       -466 {c |}{res}          6        0.10       38.60
+{txt}       -465 {c |}{res}          4        0.06       38.67
+{txt}       -464 {c |}{res}          8        0.13       38.79
+{txt}       -463 {c |}{res}          4        0.06       38.86
+{txt}       -462 {c |}{res}          4        0.06       38.92
+{txt}       -459 {c |}{res}          4        0.06       38.98
+{txt}       -458 {c |}{res}          4        0.06       39.05
+{txt}       -457 {c |}{res}          4        0.06       39.11
+{txt}       -454 {c |}{res}          6        0.10       39.21
+{txt}       -451 {c |}{res}          4        0.06       39.27
+{txt}       -449 {c |}{res}          4        0.06       39.33
+{txt}       -446 {c |}{res}         10        0.16       39.49
+{txt}       -444 {c |}{res}          8        0.13       39.62
+{txt}       -443 {c |}{res}          4        0.06       39.68
+{txt}       -440 {c |}{res}          2        0.03       39.71
+{txt}       -439 {c |}{res}          6        0.10       39.81
+{txt}       -438 {c |}{res}          4        0.06       39.87
+{txt}       -436 {c |}{res}          2        0.03       39.90
+{txt}       -433 {c |}{res}          8        0.13       40.03
+{txt}       -432 {c |}{res}          2        0.03       40.06
+{txt}       -430 {c |}{res}         10        0.16       40.22
+{txt}       -428 {c |}{res}          8        0.13       40.35
+{txt}       -424 {c |}{res}          6        0.10       40.44
+{txt}       -422 {c |}{res}          4        0.06       40.51
+{txt}       -420 {c |}{res}         10        0.16       40.67
+{txt}       -418 {c |}{res}          2        0.03       40.70
+{txt}       -417 {c |}{res}          6        0.10       40.79
+{txt}       -413 {c |}{res}          2        0.03       40.83
+{txt}       -412 {c |}{res}          4        0.06       40.89
+{txt}       -409 {c |}{res}          2        0.03       40.92
+{txt}       -408 {c |}{res}          4        0.06       40.98
+{txt}       -407 {c |}{res}          6        0.10       41.08
+{txt}       -406 {c |}{res}          2        0.03       41.11
+{txt}       -404 {c |}{res}          2        0.03       41.14
+{txt}       -402 {c |}{res}          4        0.06       41.21
+{txt}       -401 {c |}{res}          2        0.03       41.24
+{txt}       -400 {c |}{res}          4        0.06       41.30
+{txt}       -398 {c |}{res}          8        0.13       41.43
+{txt}       -397 {c |}{res}          4        0.06       41.49
+{txt}       -393 {c |}{res}          4        0.06       41.56
+{txt}       -392 {c |}{res}          2        0.03       41.59
+{txt}       -391 {c |}{res}          4        0.06       41.65
+{txt}       -390 {c |}{res}          4        0.06       41.71
+{txt}       -387 {c |}{res}          4        0.06       41.78
+{txt}       -384 {c |}{res}         10        0.16       41.94
+{txt}       -383 {c |}{res}          2        0.03       41.97
+{txt}       -381 {c |}{res}          2        0.03       42.00
+{txt}       -380 {c |}{res}          4        0.06       42.06
+{txt}       -377 {c |}{res}          8        0.13       42.19
+{txt}       -374 {c |}{res}          4        0.06       42.25
+{txt}       -372 {c |}{res}          4        0.06       42.32
+{txt}       -370 {c |}{res}          2        0.03       42.35
+{txt}       -367 {c |}{res}         10        0.16       42.51
+{txt}       -365 {c |}{res}          2        0.03       42.54
+{txt}       -364 {c |}{res}         10        0.16       42.70
+{txt}       -362 {c |}{res}          2        0.03       42.73
+{txt}       -361 {c |}{res}          2        0.03       42.76
+{txt}       -360 {c |}{res}          2        0.03       42.79
+{txt}       -359 {c |}{res}          8        0.13       42.92
+{txt}       -358 {c |}{res}          6        0.10       43.02
+{txt}       -357 {c |}{res}          2        0.03       43.05
+{txt}       -356 {c |}{res}          2        0.03       43.08
+{txt}       -354 {c |}{res}          8        0.13       43.21
+{txt}       -352 {c |}{res}          4        0.06       43.27
+{txt}       -350 {c |}{res}          4        0.06       43.33
+{txt}       -348 {c |}{res}          2        0.03       43.37
+{txt}       -347 {c |}{res}          4        0.06       43.43
+{txt}       -344 {c |}{res}          2        0.03       43.46
+{txt}       -343 {c |}{res}          2        0.03       43.49
+{txt}       -341 {c |}{res}          4        0.06       43.56
+{txt}       -339 {c |}{res}          6        0.10       43.65
+{txt}       -335 {c |}{res}          6        0.10       43.75
+{txt}       -334 {c |}{res}          2        0.03       43.78
+{txt}       -333 {c |}{res}          2        0.03       43.81
+{txt}       -332 {c |}{res}          2        0.03       43.84
+{txt}       -328 {c |}{res}          2        0.03       43.87
+{txt}       -323 {c |}{res}          6        0.10       43.97
+{txt}       -322 {c |}{res}          2        0.03       44.00
+{txt}       -320 {c |}{res}          2        0.03       44.03
+{txt}       -314 {c |}{res}          4        0.06       44.10
+{txt}       -312 {c |}{res}          4        0.06       44.16
+{txt}       -311 {c |}{res}          2        0.03       44.19
+{txt}       -310 {c |}{res}          2        0.03       44.22
+{txt}       -306 {c |}{res}          8        0.13       44.35
+{txt}       -305 {c |}{res}          4        0.06       44.41
+{txt}       -304 {c |}{res}          2        0.03       44.44
+{txt}       -301 {c |}{res}          2        0.03       44.48
+{txt}       -300 {c |}{res}          6        0.10       44.57
+{txt}       -299 {c |}{res}          8        0.13       44.70
+{txt}       -297 {c |}{res}          8        0.13       44.83
+{txt}       -296 {c |}{res}         10        0.16       44.98
+{txt}       -295 {c |}{res}          4        0.06       45.05
+{txt}       -293 {c |}{res}          6        0.10       45.14
+{txt}       -291 {c |}{res}          4        0.06       45.21
+{txt}       -290 {c |}{res}          2        0.03       45.24
+{txt}       -289 {c |}{res}          4        0.06       45.30
+{txt}       -283 {c |}{res}         10        0.16       45.46
+{txt}       -277 {c |}{res}          6        0.10       45.56
+{txt}       -276 {c |}{res}          4        0.06       45.62
+{txt}       -275 {c |}{res}          4        0.06       45.68
+{txt}       -273 {c |}{res}          2        0.03       45.71
+{txt}       -270 {c |}{res}          2        0.03       45.75
+{txt}       -268 {c |}{res}          2        0.03       45.78
+{txt}       -266 {c |}{res}          4        0.06       45.84
+{txt}       -265 {c |}{res}          2        0.03       45.87
+{txt}       -264 {c |}{res}          4        0.06       45.94
+{txt}       -263 {c |}{res}          2        0.03       45.97
+{txt}       -261 {c |}{res}          4        0.06       46.03
+{txt}       -260 {c |}{res}          2        0.03       46.06
+{txt}       -259 {c |}{res}          2        0.03       46.10
+{txt}       -258 {c |}{res}          2        0.03       46.13
+{txt}       -256 {c |}{res}          6        0.10       46.22
+{txt}       -253 {c |}{res}          4        0.06       46.29
+{txt}       -251 {c |}{res}          4        0.06       46.35
+{txt}       -250 {c |}{res}          4        0.06       46.41
+{txt}       -246 {c |}{res}          2        0.03       46.44
+{txt}       -243 {c |}{res}          8        0.13       46.57
+{txt}       -241 {c |}{res}          2        0.03       46.60
+{txt}       -238 {c |}{res}          6        0.10       46.70
+{txt}       -237 {c |}{res}          2        0.03       46.73
+{txt}       -236 {c |}{res}          2        0.03       46.76
+{txt}       -234 {c |}{res}          2        0.03       46.79
+{txt}       -231 {c |}{res}          2        0.03       46.83
+{txt}       -229 {c |}{res}          8        0.13       46.95
+{txt}       -228 {c |}{res}          4        0.06       47.02
+{txt}       -227 {c |}{res}          4        0.06       47.08
+{txt}       -226 {c |}{res}          2        0.03       47.11
+{txt}       -224 {c |}{res}          4        0.06       47.17
+{txt}       -223 {c |}{res}          4        0.06       47.24
+{txt}       -222 {c |}{res}          6        0.10       47.33
+{txt}       -221 {c |}{res}          2        0.03       47.37
+{txt}       -219 {c |}{res}          2        0.03       47.40
+{txt}       -217 {c |}{res}          4        0.06       47.46
+{txt}       -215 {c |}{res}          2        0.03       47.49
+{txt}       -212 {c |}{res}          6        0.10       47.59
+{txt}       -211 {c |}{res}          2        0.03       47.62
+{txt}       -208 {c |}{res}          2        0.03       47.65
+{txt}       -205 {c |}{res}          6        0.10       47.75
+{txt}       -203 {c |}{res}          4        0.06       47.81
+{txt}       -201 {c |}{res}          8        0.13       47.94
+{txt}       -200 {c |}{res}          4        0.06       48.00
+{txt}       -199 {c |}{res}          4        0.06       48.06
+{txt}       -197 {c |}{res}          2        0.03       48.10
+{txt}       -196 {c |}{res}          2        0.03       48.13
+{txt}       -193 {c |}{res}          6        0.10       48.22
+{txt}       -192 {c |}{res}          6        0.10       48.32
+{txt}       -191 {c |}{res}          4        0.06       48.38
+{txt}       -188 {c |}{res}          4        0.06       48.44
+{txt}       -187 {c |}{res}          4        0.06       48.51
+{txt}       -186 {c |}{res}          6        0.10       48.60
+{txt}       -184 {c |}{res}          4        0.06       48.67
+{txt}       -183 {c |}{res}          4        0.06       48.73
+{txt}       -182 {c |}{res}          2        0.03       48.76
+{txt}       -178 {c |}{res}          4        0.06       48.83
+{txt}       -177 {c |}{res}          8        0.13       48.95
+{txt}       -176 {c |}{res}          4        0.06       49.02
+{txt}       -175 {c |}{res}          4        0.06       49.08
+{txt}       -174 {c |}{res}          4        0.06       49.14
+{txt}       -173 {c |}{res}          4        0.06       49.21
+{txt}       -172 {c |}{res}          4        0.06       49.27
+{txt}       -171 {c |}{res}          4        0.06       49.33
+{txt}       -169 {c |}{res}          8        0.13       49.46
+{txt}       -167 {c |}{res}          6        0.10       49.56
+{txt}       -166 {c |}{res}          2        0.03       49.59
+{txt}       -164 {c |}{res}         16        0.25       49.84
+{txt}       -163 {c |}{res}          2        0.03       49.87
+{txt}       -161 {c |}{res}         10        0.16       50.03
+{txt}       -159 {c |}{res}          2        0.03       50.06
+{txt}       -158 {c |}{res}          4        0.06       50.13
+{txt}       -156 {c |}{res}          4        0.06       50.19
+{txt}       -154 {c |}{res}          4        0.06       50.25
+{txt}       -153 {c |}{res}          2        0.03       50.29
+{txt}       -152 {c |}{res}          6        0.10       50.38
+{txt}       -151 {c |}{res}          4        0.06       50.44
+{txt}       -149 {c |}{res}          2        0.03       50.48
+{txt}       -148 {c |}{res}          4        0.06       50.54
+{txt}       -147 {c |}{res}          2        0.03       50.57
+{txt}       -145 {c |}{res}          2        0.03       50.60
+{txt}       -144 {c |}{res}          4        0.06       50.67
+{txt}       -143 {c |}{res}          4        0.06       50.73
+{txt}       -139 {c |}{res}          2        0.03       50.76
+{txt}       -137 {c |}{res}          2        0.03       50.79
+{txt}       -135 {c |}{res}          8        0.13       50.92
+{txt}       -131 {c |}{res}          4        0.06       50.98
+{txt}       -128 {c |}{res}          4        0.06       51.05
+{txt}       -127 {c |}{res}          2        0.03       51.08
+{txt}       -126 {c |}{res}          4        0.06       51.14
+{txt}       -119 {c |}{res}          4        0.06       51.21
+{txt}       -118 {c |}{res}          4        0.06       51.27
+{txt}       -117 {c |}{res}         12        0.19       51.46
+{txt}       -116 {c |}{res}          6        0.10       51.56
+{txt}       -113 {c |}{res}          4        0.06       51.62
+{txt}       -111 {c |}{res}          4        0.06       51.68
+{txt}       -110 {c |}{res}          6        0.10       51.78
+{txt}       -104 {c |}{res}          4        0.06       51.84
+{txt}       -100 {c |}{res}         10        0.16       52.00
+{txt}        -99 {c |}{res}          2        0.03       52.03
+{txt}        -97 {c |}{res}          2        0.03       52.06
+{txt}        -95 {c |}{res}          4        0.06       52.13
+{txt}        -90 {c |}{res}         10        0.16       52.29
+{txt}        -84 {c |}{res}          4        0.06       52.35
+{txt}        -81 {c |}{res}          4        0.06       52.41
+{txt}        -79 {c |}{res}          4        0.06       52.48
+{txt}        -75 {c |}{res}          4        0.06       52.54
+{txt}        -65 {c |}{res}          8        0.13       52.67
+{txt}        -64 {c |}{res}          4        0.06       52.73
+{txt}        -63 {c |}{res}          4        0.06       52.79
+{txt}        -62 {c |}{res}          2        0.03       52.83
+{txt}        -61 {c |}{res}          4        0.06       52.89
+{txt}        -60 {c |}{res}          6        0.10       52.98
+{txt}        -59 {c |}{res}          4        0.06       53.05
+{txt}        -58 {c |}{res}          6        0.10       53.14
+{txt}        -56 {c |}{res}          6        0.10       53.24
+{txt}        -55 {c |}{res}          2        0.03       53.27
+{txt}        -52 {c |}{res}          4        0.06       53.33
+{txt}        -51 {c |}{res}          6        0.10       53.43
+{txt}        -50 {c |}{res}          6        0.10       53.52
+{txt}        -49 {c |}{res}          2        0.03       53.56
+{txt}        -46 {c |}{res}          2        0.03       53.59
+{txt}        -43 {c |}{res}          2        0.03       53.62
+{txt}        -42 {c |}{res}          4        0.06       53.68
+{txt}        -41 {c |}{res}          6        0.10       53.78
+{txt}        -39 {c |}{res}          4        0.06       53.84
+{txt}        -38 {c |}{res}          4        0.06       53.90
+{txt}        -34 {c |}{res}          4        0.06       53.97
+{txt}        -32 {c |}{res}          8        0.13       54.10
+{txt}        -29 {c |}{res}          2        0.03       54.13
+{txt}        -25 {c |}{res}          2        0.03       54.16
+{txt}        -23 {c |}{res}          4        0.06       54.22
+{txt}        -21 {c |}{res}          4        0.06       54.29
+{txt}        -20 {c |}{res}          4        0.06       54.35
+{txt}        -19 {c |}{res}          2        0.03       54.38
+{txt}        -14 {c |}{res}          4        0.06       54.44
+{txt}        -11 {c |}{res}          2        0.03       54.48
+{txt}         -8 {c |}{res}          2        0.03       54.51
+{txt}         -7 {c |}{res}          2        0.03       54.54
+{txt}         -5 {c |}{res}          2        0.03       54.57
+{txt}         -4 {c |}{res}          4        0.06       54.63
+{txt}         -3 {c |}{res}          2        0.03       54.67
+{txt}         -2 {c |}{res}          2        0.03       54.70
+{txt}         -1 {c |}{res}          6        0.10       54.79
+{txt}          3 {c |}{res}          2        0.03       54.83
+{txt}          5 {c |}{res}          4        0.06       54.89
+{txt}          6 {c |}{res}          2        0.03       54.92
+{txt}          8 {c |}{res}          6        0.10       55.02
+{txt}          9 {c |}{res}          2        0.03       55.05
+{txt}         10 {c |}{res}          2        0.03       55.08
+{txt}         11 {c |}{res}          2        0.03       55.11
+{txt}         12 {c |}{res}          2        0.03       55.14
+{txt}         14 {c |}{res}          2        0.03       55.17
+{txt}         16 {c |}{res}          4        0.06       55.24
+{txt}         17 {c |}{res}          4        0.06       55.30
+{txt}         18 {c |}{res}          2        0.03       55.33
+{txt}         20 {c |}{res}          4        0.06       55.40
+{txt}         23 {c |}{res}          4        0.06       55.46
+{txt}         26 {c |}{res}          4        0.06       55.52
+{txt}         30 {c |}{res}          4        0.06       55.59
+{txt}         32 {c |}{res}          8        0.13       55.71
+{txt}         36 {c |}{res}          4        0.06       55.78
+{txt}         37 {c |}{res}          4        0.06       55.84
+{txt}         39 {c |}{res}          6        0.10       55.94
+{txt}         43 {c |}{res}          4        0.06       56.00
+{txt}         44 {c |}{res}          2        0.03       56.03
+{txt}         47 {c |}{res}          2        0.03       56.06
+{txt}         49 {c |}{res}          2        0.03       56.10
+{txt}         51 {c |}{res}         14        0.22       56.32
+{txt}         55 {c |}{res}         10        0.16       56.48
+{txt}         56 {c |}{res}          6        0.10       56.57
+{txt}         59 {c |}{res}          4        0.06       56.63
+{txt}         61 {c |}{res}          4        0.06       56.70
+{txt}         63 {c |}{res}          4        0.06       56.76
+{txt}         64 {c |}{res}          4        0.06       56.83
+{txt}         66 {c |}{res}          4        0.06       56.89
+{txt}         67 {c |}{res}          6        0.10       56.98
+{txt}         68 {c |}{res}          4        0.06       57.05
+{txt}         69 {c |}{res}          4        0.06       57.11
+{txt}         70 {c |}{res}          4        0.06       57.17
+{txt}         72 {c |}{res}          4        0.06       57.24
+{txt}         73 {c |}{res}          2        0.03       57.27
+{txt}         75 {c |}{res}          4        0.06       57.33
+{txt}         78 {c |}{res}          4        0.06       57.40
+{txt}         81 {c |}{res}          2        0.03       57.43
+{txt}         83 {c |}{res}          2        0.03       57.46
+{txt}         84 {c |}{res}          6        0.10       57.56
+{txt}         86 {c |}{res}          6        0.10       57.65
+{txt}         87 {c |}{res}          8        0.13       57.78
+{txt}         88 {c |}{res}          2        0.03       57.81
+{txt}         89 {c |}{res}          2        0.03       57.84
+{txt}         92 {c |}{res}          4        0.06       57.90
+{txt}         94 {c |}{res}          2        0.03       57.94
+{txt}         95 {c |}{res}          2        0.03       57.97
+{txt}         96 {c |}{res}          4        0.06       58.03
+{txt}         99 {c |}{res}          4        0.06       58.10
+{txt}        101 {c |}{res}          4        0.06       58.16
+{txt}        103 {c |}{res}          4        0.06       58.22
+{txt}        106 {c |}{res}          4        0.06       58.29
+{txt}        111 {c |}{res}          2        0.03       58.32
+{txt}        112 {c |}{res}          2        0.03       58.35
+{txt}        113 {c |}{res}         12        0.19       58.54
+{txt}        114 {c |}{res}          2        0.03       58.57
+{txt}        118 {c |}{res}          4        0.06       58.63
+{txt}        120 {c |}{res}          2        0.03       58.67
+{txt}        122 {c |}{res}          6        0.10       58.76
+{txt}        125 {c |}{res}          4        0.06       58.83
+{txt}        127 {c |}{res}          4        0.06       58.89
+{txt}        132 {c |}{res}          2        0.03       58.92
+{txt}        133 {c |}{res}          2        0.03       58.95
+{txt}        134 {c |}{res}          6        0.10       59.05
+{txt}        135 {c |}{res}          4        0.06       59.11
+{txt}        141 {c |}{res}          6        0.10       59.21
+{txt}        142 {c |}{res}          2        0.03       59.24
+{txt}        144 {c |}{res}          2        0.03       59.27
+{txt}        154 {c |}{res}          8        0.13       59.40
+{txt}        156 {c |}{res}          4        0.06       59.46
+{txt}        164 {c |}{res}          2        0.03       59.49
+{txt}        165 {c |}{res}          2        0.03       59.52
+{txt}        166 {c |}{res}          4        0.06       59.59
+{txt}        168 {c |}{res}          4        0.06       59.65
+{txt}        169 {c |}{res}          6        0.10       59.75
+{txt}        170 {c |}{res}          4        0.06       59.81
+{txt}        174 {c |}{res}          8        0.13       59.94
+{txt}        175 {c |}{res}          2        0.03       59.97
+{txt}        177 {c |}{res}          4        0.06       60.03
+{txt}        178 {c |}{res}          4        0.06       60.10
+{txt}        179 {c |}{res}          4        0.06       60.16
+{txt}        180 {c |}{res}          2        0.03       60.19
+{txt}        181 {c |}{res}          2        0.03       60.22
+{txt}        183 {c |}{res}          4        0.06       60.29
+{txt}        184 {c |}{res}          4        0.06       60.35
+{txt}        185 {c |}{res}          2        0.03       60.38
+{txt}        186 {c |}{res}          2        0.03       60.41
+{txt}        187 {c |}{res}          2        0.03       60.44
+{txt}        190 {c |}{res}          8        0.13       60.57
+{txt}        192 {c |}{res}          4        0.06       60.63
+{txt}        194 {c |}{res}          4        0.06       60.70
+{txt}        195 {c |}{res}          2        0.03       60.73
+{txt}        198 {c |}{res}          8        0.13       60.86
+{txt}        199 {c |}{res}          4        0.06       60.92
+{txt}        200 {c |}{res}          4        0.06       60.98
+{txt}        203 {c |}{res}          2        0.03       61.02
+{txt}        205 {c |}{res}          6        0.10       61.11
+{txt}        206 {c |}{res}          2        0.03       61.14
+{txt}        207 {c |}{res}          4        0.06       61.21
+{txt}        208 {c |}{res}          2        0.03       61.24
+{txt}        213 {c |}{res}          2        0.03       61.27
+{txt}        215 {c |}{res}          4        0.06       61.33
+{txt}        216 {c |}{res}          4        0.06       61.40
+{txt}        217 {c |}{res}          2        0.03       61.43
+{txt}        219 {c |}{res}          2        0.03       61.46
+{txt}        223 {c |}{res}          2        0.03       61.49
+{txt}        225 {c |}{res}          4        0.06       61.56
+{txt}        226 {c |}{res}          4        0.06       61.62
+{txt}        228 {c |}{res}          2        0.03       61.65
+{txt}        230 {c |}{res}          8        0.13       61.78
+{txt}        234 {c |}{res}          6        0.10       61.87
+{txt}        235 {c |}{res}          2        0.03       61.90
+{txt}        237 {c |}{res}          4        0.06       61.97
+{txt}        238 {c |}{res}          4        0.06       62.03
+{txt}        243 {c |}{res}          6        0.10       62.13
+{txt}        244 {c |}{res}         10        0.16       62.29
+{txt}        246 {c |}{res}          4        0.06       62.35
+{txt}        248 {c |}{res}          4        0.06       62.41
+{txt}        251 {c |}{res}          2        0.03       62.44
+{txt}        252 {c |}{res}          4        0.06       62.51
+{txt}        254 {c |}{res}          4        0.06       62.57
+{txt}        258 {c |}{res}          4        0.06       62.63
+{txt}        261 {c |}{res}          4        0.06       62.70
+{txt}        264 {c |}{res}          2        0.03       62.73
+{txt}        265 {c |}{res}          2        0.03       62.76
+{txt}        266 {c |}{res}          2        0.03       62.79
+{txt}        267 {c |}{res}          4        0.06       62.86
+{txt}        269 {c |}{res}          2        0.03       62.89
+{txt}        270 {c |}{res}          2        0.03       62.92
+{txt}        271 {c |}{res}          2        0.03       62.95
+{txt}        272 {c |}{res}          4        0.06       63.02
+{txt}        273 {c |}{res}          2        0.03       63.05
+{txt}        274 {c |}{res}         14        0.22       63.27
+{txt}        277 {c |}{res}          4        0.06       63.33
+{txt}        279 {c |}{res}          6        0.10       63.43
+{txt}        282 {c |}{res}          8        0.13       63.56
+{txt}        283 {c |}{res}          6        0.10       63.65
+{txt}        284 {c |}{res}          2        0.03       63.68
+{txt}        285 {c |}{res}          2        0.03       63.71
+{txt}        288 {c |}{res}          2        0.03       63.75
+{txt}        296 {c |}{res}         10        0.16       63.90
+{txt}        299 {c |}{res}          4        0.06       63.97
+{txt}        300 {c |}{res}          8        0.13       64.10
+{txt}        303 {c |}{res}          6        0.10       64.19
+{txt}        307 {c |}{res}          4        0.06       64.25
+{txt}        308 {c |}{res}          4        0.06       64.32
+{txt}        309 {c |}{res}          2        0.03       64.35
+{txt}        310 {c |}{res}          6        0.10       64.44
+{txt}        312 {c |}{res}          4        0.06       64.51
+{txt}        313 {c |}{res}          6        0.10       64.60
+{txt}        314 {c |}{res}          6        0.10       64.70
+{txt}        316 {c |}{res}          6        0.10       64.79
+{txt}        317 {c |}{res}          2        0.03       64.83
+{txt}        320 {c |}{res}          2        0.03       64.86
+{txt}        321 {c |}{res}          4        0.06       64.92
+{txt}        323 {c |}{res}          2        0.03       64.95
+{txt}        324 {c |}{res}          4        0.06       65.02
+{txt}        327 {c |}{res}          4        0.06       65.08
+{txt}        329 {c |}{res}          2        0.03       65.11
+{txt}        330 {c |}{res}          2        0.03       65.14
+{txt}        331 {c |}{res}          2        0.03       65.17
+{txt}        333 {c |}{res}          2        0.03       65.21
+{txt}        335 {c |}{res}          4        0.06       65.27
+{txt}        336 {c |}{res}          4        0.06       65.33
+{txt}        337 {c |}{res}          6        0.10       65.43
+{txt}        339 {c |}{res}          4        0.06       65.49
+{txt}        343 {c |}{res}          2        0.03       65.52
+{txt}        345 {c |}{res}          4        0.06       65.59
+{txt}        346 {c |}{res}          2        0.03       65.62
+{txt}        347 {c |}{res}          4        0.06       65.68
+{txt}        348 {c |}{res}          4        0.06       65.75
+{txt}        349 {c |}{res}          4        0.06       65.81
+{txt}        356 {c |}{res}          4        0.06       65.87
+{txt}        357 {c |}{res}          8        0.13       66.00
+{txt}        360 {c |}{res}          2        0.03       66.03
+{txt}        364 {c |}{res}          2        0.03       66.06
+{txt}        365 {c |}{res}          2        0.03       66.10
+{txt}        368 {c |}{res}          4        0.06       66.16
+{txt}        371 {c |}{res}          4        0.06       66.22
+{txt}        373 {c |}{res}          6        0.10       66.32
+{txt}        375 {c |}{res}          2        0.03       66.35
+{txt}        377 {c |}{res}          6        0.10       66.44
+{txt}        378 {c |}{res}          4        0.06       66.51
+{txt}        383 {c |}{res}          2        0.03       66.54
+{txt}        385 {c |}{res}          2        0.03       66.57
+{txt}        386 {c |}{res}          4        0.06       66.63
+{txt}        389 {c |}{res}          8        0.13       66.76
+{txt}        390 {c |}{res}          2        0.03       66.79
+{txt}        392 {c |}{res}          4        0.06       66.86
+{txt}        393 {c |}{res}          4        0.06       66.92
+{txt}        394 {c |}{res}          2        0.03       66.95
+{txt}        395 {c |}{res}          2        0.03       66.98
+{txt}        396 {c |}{res}          2        0.03       67.02
+{txt}        398 {c |}{res}          2        0.03       67.05
+{txt}        399 {c |}{res}          4        0.06       67.11
+{txt}        401 {c |}{res}          4        0.06       67.17
+{txt}        403 {c |}{res}          2        0.03       67.21
+{txt}        404 {c |}{res}          2        0.03       67.24
+{txt}        405 {c |}{res}          4        0.06       67.30
+{txt}        406 {c |}{res}          4        0.06       67.37
+{txt}        408 {c |}{res}          2        0.03       67.40
+{txt}        410 {c |}{res}          4        0.06       67.46
+{txt}        414 {c |}{res}          2        0.03       67.49
+{txt}        415 {c |}{res}          6        0.10       67.59
+{txt}        420 {c |}{res}          2        0.03       67.62
+{txt}        422 {c |}{res}          2        0.03       67.65
+{txt}        425 {c |}{res}          2        0.03       67.68
+{txt}        426 {c |}{res}          2        0.03       67.71
+{txt}        428 {c |}{res}          4        0.06       67.78
+{txt}        429 {c |}{res}          8        0.13       67.90
+{txt}        430 {c |}{res}          2        0.03       67.94
+{txt}        431 {c |}{res}          8        0.13       68.06
+{txt}        432 {c |}{res}          8        0.13       68.19
+{txt}        437 {c |}{res}          8        0.13       68.32
+{txt}        440 {c |}{res}         12        0.19       68.51
+{txt}        441 {c |}{res}          4        0.06       68.57
+{txt}        443 {c |}{res}          4        0.06       68.63
+{txt}        444 {c |}{res}          2        0.03       68.67
+{txt}        445 {c |}{res}          4        0.06       68.73
+{txt}        451 {c |}{res}          2        0.03       68.76
+{txt}        455 {c |}{res}          4        0.06       68.83
+{txt}        456 {c |}{res}          2        0.03       68.86
+{txt}        458 {c |}{res}          2        0.03       68.89
+{txt}        459 {c |}{res}          4        0.06       68.95
+{txt}        463 {c |}{res}          2        0.03       68.98
+{txt}        470 {c |}{res}          2        0.03       69.02
+{txt}        471 {c |}{res}          6        0.10       69.11
+{txt}        474 {c |}{res}          4        0.06       69.17
+{txt}        476 {c |}{res}          4        0.06       69.24
+{txt}        477 {c |}{res}          6        0.10       69.33
+{txt}        479 {c |}{res}          4        0.06       69.40
+{txt}        480 {c |}{res}          6        0.10       69.49
+{txt}        482 {c |}{res}          4        0.06       69.56
+{txt}        483 {c |}{res}          6        0.10       69.65
+{txt}        484 {c |}{res}          2        0.03       69.68
+{txt}        485 {c |}{res}          6        0.10       69.78
+{txt}        488 {c |}{res}          2        0.03       69.81
+{txt}        491 {c |}{res}          2        0.03       69.84
+{txt}        492 {c |}{res}          2        0.03       69.87
+{txt}        495 {c |}{res}          6        0.10       69.97
+{txt}        503 {c |}{res}          6        0.10       70.06
+{txt}        504 {c |}{res}          2        0.03       70.10
+{txt}        506 {c |}{res}          2        0.03       70.13
+{txt}        507 {c |}{res}          4        0.06       70.19
+{txt}        508 {c |}{res}          8        0.13       70.32
+{txt}        509 {c |}{res}          4        0.06       70.38
+{txt}        510 {c |}{res}          4        0.06       70.44
+{txt}        511 {c |}{res}          4        0.06       70.51
+{txt}        512 {c |}{res}          4        0.06       70.57
+{txt}        515 {c |}{res}          6        0.10       70.67
+{txt}        516 {c |}{res}          4        0.06       70.73
+{txt}        517 {c |}{res}          4        0.06       70.79
+{txt}        519 {c |}{res}          4        0.06       70.86
+{txt}        520 {c |}{res}          2        0.03       70.89
+{txt}        523 {c |}{res}          4        0.06       70.95
+{txt}        530 {c |}{res}          4        0.06       71.02
+{txt}        535 {c |}{res}          4        0.06       71.08
+{txt}        537 {c |}{res}          4        0.06       71.14
+{txt}        541 {c |}{res}         10        0.16       71.30
+{txt}        548 {c |}{res}          2        0.03       71.33
+{txt}        549 {c |}{res}          2        0.03       71.37
+{txt}        551 {c |}{res}          2        0.03       71.40
+{txt}        554 {c |}{res}          2        0.03       71.43
+{txt}        560 {c |}{res}          2        0.03       71.46
+{txt}        561 {c |}{res}          2        0.03       71.49
+{txt}        562 {c |}{res}          4        0.06       71.56
+{txt}        563 {c |}{res}          4        0.06       71.62
+{txt}        564 {c |}{res}          2        0.03       71.65
+{txt}        566 {c |}{res}          4        0.06       71.71
+{txt}        573 {c |}{res}          4        0.06       71.78
+{txt}        574 {c |}{res}          4        0.06       71.84
+{txt}        579 {c |}{res}          4        0.06       71.90
+{txt}        581 {c |}{res}          2        0.03       71.94
+{txt}        586 {c |}{res}          4        0.06       72.00
+{txt}        592 {c |}{res}          4        0.06       72.06
+{txt}        593 {c |}{res}          2        0.03       72.10
+{txt}        594 {c |}{res}          4        0.06       72.16
+{txt}        595 {c |}{res}          2        0.03       72.19
+{txt}        596 {c |}{res}          2        0.03       72.22
+{txt}        599 {c |}{res}          4        0.06       72.29
+{txt}        600 {c |}{res}          2        0.03       72.32
+{txt}        602 {c |}{res}          2        0.03       72.35
+{txt}        604 {c |}{res}          4        0.06       72.41
+{txt}        605 {c |}{res}          8        0.13       72.54
+{txt}        606 {c |}{res}          4        0.06       72.60
+{txt}        615 {c |}{res}          6        0.10       72.70
+{txt}        616 {c |}{res}          4        0.06       72.76
+{txt}        617 {c |}{res}          4        0.06       72.83
+{txt}        621 {c |}{res}          2        0.03       72.86
+{txt}        624 {c |}{res}          8        0.13       72.98
+{txt}        625 {c |}{res}          2        0.03       73.02
+{txt}        626 {c |}{res}          6        0.10       73.11
+{txt}        629 {c |}{res}          8        0.13       73.24
+{txt}        630 {c |}{res}          6        0.10       73.33
+{txt}        632 {c |}{res}          4        0.06       73.40
+{txt}        633 {c |}{res}          4        0.06       73.46
+{txt}        637 {c |}{res}          4        0.06       73.52
+{txt}        639 {c |}{res}          8        0.13       73.65
+{txt}        641 {c |}{res}          4        0.06       73.71
+{txt}        642 {c |}{res}          2        0.03       73.75
+{txt}        643 {c |}{res}          2        0.03       73.78
+{txt}        645 {c |}{res}          2        0.03       73.81
+{txt}        648 {c |}{res}          2        0.03       73.84
+{txt}        649 {c |}{res}          4        0.06       73.90
+{txt}        655 {c |}{res}          6        0.10       74.00
+{txt}        658 {c |}{res}          4        0.06       74.06
+{txt}        659 {c |}{res}          6        0.10       74.16
+{txt}        660 {c |}{res}          4        0.06       74.22
+{txt}        662 {c |}{res}          6        0.10       74.32
+{txt}        666 {c |}{res}          8        0.13       74.44
+{txt}        669 {c |}{res}          2        0.03       74.48
+{txt}        671 {c |}{res}          6        0.10       74.57
+{txt}        672 {c |}{res}          4        0.06       74.63
+{txt}        673 {c |}{res}          2        0.03       74.67
+{txt}        679 {c |}{res}          2        0.03       74.70
+{txt}        684 {c |}{res}          4        0.06       74.76
+{txt}        686 {c |}{res}          2        0.03       74.79
+{txt}        691 {c |}{res}          4        0.06       74.86
+{txt}        692 {c |}{res}          4        0.06       74.92
+{txt}        693 {c |}{res}          4        0.06       74.98
+{txt}        694 {c |}{res}          2        0.03       75.02
+{txt}        696 {c |}{res}          4        0.06       75.08
+{txt}        699 {c |}{res}          2        0.03       75.11
+{txt}        701 {c |}{res}          4        0.06       75.17
+{txt}        703 {c |}{res}          6        0.10       75.27
+{txt}        709 {c |}{res}          4        0.06       75.33
+{txt}        711 {c |}{res}          6        0.10       75.43
+{txt}        718 {c |}{res}          4        0.06       75.49
+{txt}        722 {c |}{res}          2        0.03       75.52
+{txt}        724 {c |}{res}          2        0.03       75.56
+{txt}        725 {c |}{res}          4        0.06       75.62
+{txt}        727 {c |}{res}          4        0.06       75.68
+{txt}        729 {c |}{res}          6        0.10       75.78
+{txt}        730 {c |}{res}          4        0.06       75.84
+{txt}        732 {c |}{res}          4        0.06       75.90
+{txt}        733 {c |}{res}          4        0.06       75.97
+{txt}        734 {c |}{res}          2        0.03       76.00
+{txt}        735 {c |}{res}          8        0.13       76.13
+{txt}        739 {c |}{res}          2        0.03       76.16
+{txt}        740 {c |}{res}          8        0.13       76.29
+{txt}        746 {c |}{res}          4        0.06       76.35
+{txt}        748 {c |}{res}          2        0.03       76.38
+{txt}        750 {c |}{res}          2        0.03       76.41
+{txt}        752 {c |}{res}          2        0.03       76.44
+{txt}        754 {c |}{res}          8        0.13       76.57
+{txt}        755 {c |}{res}          4        0.06       76.63
+{txt}        757 {c |}{res}          2        0.03       76.67
+{txt}        758 {c |}{res}          2        0.03       76.70
+{txt}        761 {c |}{res}          2        0.03       76.73
+{txt}        763 {c |}{res}          2        0.03       76.76
+{txt}        765 {c |}{res}          4        0.06       76.83
+{txt}        766 {c |}{res}          2        0.03       76.86
+{txt}        771 {c |}{res}          4        0.06       76.92
+{txt}        775 {c |}{res}          2        0.03       76.95
+{txt}        779 {c |}{res}          4        0.06       77.02
+{txt}        780 {c |}{res}          2        0.03       77.05
+{txt}        781 {c |}{res}          2        0.03       77.08
+{txt}        785 {c |}{res}          2        0.03       77.11
+{txt}        787 {c |}{res}          2        0.03       77.14
+{txt}        788 {c |}{res}          8        0.13       77.27
+{txt}        790 {c |}{res}          4        0.06       77.33
+{txt}        792 {c |}{res}          4        0.06       77.40
+{txt}        795 {c |}{res}          2        0.03       77.43
+{txt}        799 {c |}{res}          8        0.13       77.56
+{txt}        800 {c |}{res}          4        0.06       77.62
+{txt}        801 {c |}{res}          4        0.06       77.68
+{txt}        802 {c |}{res}          4        0.06       77.75
+{txt}        803 {c |}{res}          4        0.06       77.81
+{txt}        805 {c |}{res}          2        0.03       77.84
+{txt}        810 {c |}{res}          4        0.06       77.90
+{txt}        811 {c |}{res}          2        0.03       77.94
+{txt}        820 {c |}{res}         14        0.22       78.16
+{txt}        823 {c |}{res}          6        0.10       78.25
+{txt}        826 {c |}{res}          4        0.06       78.32
+{txt}        828 {c |}{res}          4        0.06       78.38
+{txt}        831 {c |}{res}          2        0.03       78.41
+{txt}        832 {c |}{res}          4        0.06       78.48
+{txt}        834 {c |}{res}          4        0.06       78.54
+{txt}        835 {c |}{res}          2        0.03       78.57
+{txt}        837 {c |}{res}          4        0.06       78.63
+{txt}        838 {c |}{res}          4        0.06       78.70
+{txt}        841 {c |}{res}         10        0.16       78.86
+{txt}        842 {c |}{res}          4        0.06       78.92
+{txt}        843 {c |}{res}         10        0.16       79.08
+{txt}        844 {c |}{res}          2        0.03       79.11
+{txt}        847 {c |}{res}          2        0.03       79.14
+{txt}        849 {c |}{res}          4        0.06       79.21
+{txt}        852 {c |}{res}          2        0.03       79.24
+{txt}        856 {c |}{res}          4        0.06       79.30
+{txt}        857 {c |}{res}          4        0.06       79.37
+{txt}        860 {c |}{res}          4        0.06       79.43
+{txt}        861 {c |}{res}          2        0.03       79.46
+{txt}        862 {c |}{res}          2        0.03       79.49
+{txt}        868 {c |}{res}          2        0.03       79.52
+{txt}        870 {c |}{res}          8        0.13       79.65
+{txt}        871 {c |}{res}          6        0.10       79.75
+{txt}        873 {c |}{res}          6        0.10       79.84
+{txt}        874 {c |}{res}          4        0.06       79.90
+{txt}        875 {c |}{res}          4        0.06       79.97
+{txt}        879 {c |}{res}          4        0.06       80.03
+{txt}        880 {c |}{res}          4        0.06       80.10
+{txt}        882 {c |}{res}          4        0.06       80.16
+{txt}        883 {c |}{res}          2        0.03       80.19
+{txt}        884 {c |}{res}          4        0.06       80.25
+{txt}        885 {c |}{res}          4        0.06       80.32
+{txt}        887 {c |}{res}          2        0.03       80.35
+{txt}        895 {c |}{res}          2        0.03       80.38
+{txt}        896 {c |}{res}          4        0.06       80.44
+{txt}        898 {c |}{res}          2        0.03       80.48
+{txt}        899 {c |}{res}          2        0.03       80.51
+{txt}        903 {c |}{res}          4        0.06       80.57
+{txt}        904 {c |}{res}          2        0.03       80.60
+{txt}        905 {c |}{res}          8        0.13       80.73
+{txt}        908 {c |}{res}          4        0.06       80.79
+{txt}        911 {c |}{res}          4        0.06       80.86
+{txt}        913 {c |}{res}          2        0.03       80.89
+{txt}        915 {c |}{res}          4        0.06       80.95
+{txt}        917 {c |}{res}          2        0.03       80.98
+{txt}        920 {c |}{res}          4        0.06       81.05
+{txt}        922 {c |}{res}          6        0.10       81.14
+{txt}        925 {c |}{res}          6        0.10       81.24
+{txt}        927 {c |}{res}          4        0.06       81.30
+{txt}        929 {c |}{res}          4        0.06       81.37
+{txt}        930 {c |}{res}          2        0.03       81.40
+{txt}        931 {c |}{res}          2        0.03       81.43
+{txt}        933 {c |}{res}          4        0.06       81.49
+{txt}        934 {c |}{res}          2        0.03       81.52
+{txt}        938 {c |}{res}          4        0.06       81.59
+{txt}        939 {c |}{res}          2        0.03       81.62
+{txt}        944 {c |}{res}          2        0.03       81.65
+{txt}        945 {c |}{res}          4        0.06       81.71
+{txt}        949 {c |}{res}          6        0.10       81.81
+{txt}        952 {c |}{res}          4        0.06       81.87
+{txt}        954 {c |}{res}          4        0.06       81.94
+{txt}        955 {c |}{res}          4        0.06       82.00
+{txt}        957 {c |}{res}          2        0.03       82.03
+{txt}        964 {c |}{res}          6        0.10       82.13
+{txt}        965 {c |}{res}          2        0.03       82.16
+{txt}        967 {c |}{res}          4        0.06       82.22
+{txt}        971 {c |}{res}          6        0.10       82.32
+{txt}        972 {c |}{res}          2        0.03       82.35
+{txt}        973 {c |}{res}          4        0.06       82.41
+{txt}        978 {c |}{res}          8        0.13       82.54
+{txt}        982 {c |}{res}          4        0.06       82.60
+{txt}        983 {c |}{res}          4        0.06       82.67
+{txt}        984 {c |}{res}          4        0.06       82.73
+{txt}        985 {c |}{res}          4        0.06       82.79
+{txt}        986 {c |}{res}          2        0.03       82.83
+{txt}        988 {c |}{res}          4        0.06       82.89
+{txt}        996 {c |}{res}          6        0.10       82.98
+{txt}        998 {c |}{res}          4        0.06       83.05
+{txt}        999 {c |}{res}          4        0.06       83.11
+{txt}       1008 {c |}{res}          4        0.06       83.17
+{txt}       1010 {c |}{res}          4        0.06       83.24
+{txt}       1012 {c |}{res}          2        0.03       83.27
+{txt}       1015 {c |}{res}          2        0.03       83.30
+{txt}       1018 {c |}{res}          4        0.06       83.37
+{txt}       1021 {c |}{res}          4        0.06       83.43
+{txt}       1023 {c |}{res}          2        0.03       83.46
+{txt}       1028 {c |}{res}          6        0.10       83.56
+{txt}       1029 {c |}{res}          4        0.06       83.62
+{txt}       1032 {c |}{res}          2        0.03       83.65
+{txt}       1033 {c |}{res}          2        0.03       83.68
+{txt}       1035 {c |}{res}          4        0.06       83.75
+{txt}       1041 {c |}{res}          2        0.03       83.78
+{txt}       1047 {c |}{res}          4        0.06       83.84
+{txt}       1050 {c |}{res}          2        0.03       83.87
+{txt}       1051 {c |}{res}          2        0.03       83.90
+{txt}       1052 {c |}{res}          4        0.06       83.97
+{txt}       1053 {c |}{res}          4        0.06       84.03
+{txt}       1054 {c |}{res}          8        0.13       84.16
+{txt}       1056 {c |}{res}          4        0.06       84.22
+{txt}       1067 {c |}{res}          2        0.03       84.25
+{txt}       1070 {c |}{res}          4        0.06       84.32
+{txt}       1073 {c |}{res}          4        0.06       84.38
+{txt}       1075 {c |}{res}          4        0.06       84.44
+{txt}       1077 {c |}{res}          2        0.03       84.48
+{txt}       1085 {c |}{res}          2        0.03       84.51
+{txt}       1096 {c |}{res}          2        0.03       84.54
+{txt}       1102 {c |}{res}          2        0.03       84.57
+{txt}       1103 {c |}{res}          4        0.06       84.63
+{txt}       1107 {c |}{res}          6        0.10       84.73
+{txt}       1110 {c |}{res}          8        0.13       84.86
+{txt}       1111 {c |}{res}          2        0.03       84.89
+{txt}       1113 {c |}{res}          8        0.13       85.02
+{txt}       1114 {c |}{res}          4        0.06       85.08
+{txt}       1115 {c |}{res}          8        0.13       85.21
+{txt}       1116 {c |}{res}          8        0.13       85.33
+{txt}       1117 {c |}{res}          4        0.06       85.40
+{txt}       1119 {c |}{res}          6        0.10       85.49
+{txt}       1122 {c |}{res}          4        0.06       85.56
+{txt}       1125 {c |}{res}          2        0.03       85.59
+{txt}       1133 {c |}{res}          2        0.03       85.62
+{txt}       1134 {c |}{res}          2        0.03       85.65
+{txt}       1137 {c |}{res}          2        0.03       85.68
+{txt}       1139 {c |}{res}          4        0.06       85.75
+{txt}       1144 {c |}{res}          4        0.06       85.81
+{txt}       1146 {c |}{res}          4        0.06       85.87
+{txt}       1149 {c |}{res}          4        0.06       85.94
+{txt}       1150 {c |}{res}          2        0.03       85.97
+{txt}       1153 {c |}{res}          4        0.06       86.03
+{txt}       1158 {c |}{res}          4        0.06       86.10
+{txt}       1159 {c |}{res}         10        0.16       86.25
+{txt}       1161 {c |}{res}          4        0.06       86.32
+{txt}       1162 {c |}{res}          4        0.06       86.38
+{txt}       1164 {c |}{res}          2        0.03       86.41
+{txt}       1166 {c |}{res}          4        0.06       86.48
+{txt}       1167 {c |}{res}          2        0.03       86.51
+{txt}       1168 {c |}{res}          4        0.06       86.57
+{txt}       1173 {c |}{res}          4        0.06       86.63
+{txt}       1174 {c |}{res}          4        0.06       86.70
+{txt}       1177 {c |}{res}          4        0.06       86.76
+{txt}       1179 {c |}{res}          2        0.03       86.79
+{txt}       1184 {c |}{res}          2        0.03       86.83
+{txt}       1185 {c |}{res}          4        0.06       86.89
+{txt}       1186 {c |}{res}          4        0.06       86.95
+{txt}       1188 {c |}{res}          2        0.03       86.98
+{txt}       1192 {c |}{res}          2        0.03       87.02
+{txt}       1193 {c |}{res}          4        0.06       87.08
+{txt}       1196 {c |}{res}          4        0.06       87.14
+{txt}       1197 {c |}{res}          6        0.10       87.24
+{txt}       1199 {c |}{res}          4        0.06       87.30
+{txt}       1202 {c |}{res}          4        0.06       87.37
+{txt}       1204 {c |}{res}          2        0.03       87.40
+{txt}       1206 {c |}{res}          4        0.06       87.46
+{txt}       1208 {c |}{res}          4        0.06       87.52
+{txt}       1209 {c |}{res}          4        0.06       87.59
+{txt}       1212 {c |}{res}          2        0.03       87.62
+{txt}       1215 {c |}{res}          4        0.06       87.68
+{txt}       1216 {c |}{res}          4        0.06       87.75
+{txt}       1217 {c |}{res}          2        0.03       87.78
+{txt}       1226 {c |}{res}          2        0.03       87.81
+{txt}       1227 {c |}{res}          4        0.06       87.87
+{txt}       1229 {c |}{res}          4        0.06       87.94
+{txt}       1237 {c |}{res}          2        0.03       87.97
+{txt}       1238 {c |}{res}          4        0.06       88.03
+{txt}       1242 {c |}{res}         12        0.19       88.22
+{txt}       1246 {c |}{res}          2        0.03       88.25
+{txt}       1247 {c |}{res}          2        0.03       88.29
+{txt}       1248 {c |}{res}         10        0.16       88.44
+{txt}       1257 {c |}{res}          4        0.06       88.51
+{txt}       1259 {c |}{res}          4        0.06       88.57
+{txt}       1260 {c |}{res}          4        0.06       88.63
+{txt}       1262 {c |}{res}          4        0.06       88.70
+{txt}       1263 {c |}{res}          2        0.03       88.73
+{txt}       1273 {c |}{res}          4        0.06       88.79
+{txt}       1279 {c |}{res}          4        0.06       88.86
+{txt}       1282 {c |}{res}          4        0.06       88.92
+{txt}       1284 {c |}{res}          2        0.03       88.95
+{txt}       1286 {c |}{res}          4        0.06       89.02
+{txt}       1288 {c |}{res}          4        0.06       89.08
+{txt}       1289 {c |}{res}          2        0.03       89.11
+{txt}       1291 {c |}{res}          2        0.03       89.14
+{txt}       1294 {c |}{res}          4        0.06       89.21
+{txt}       1297 {c |}{res}          4        0.06       89.27
+{txt}       1303 {c |}{res}          2        0.03       89.30
+{txt}       1309 {c |}{res}          2        0.03       89.33
+{txt}       1310 {c |}{res}          4        0.06       89.40
+{txt}       1317 {c |}{res}          4        0.06       89.46
+{txt}       1318 {c |}{res}          2        0.03       89.49
+{txt}       1321 {c |}{res}          2        0.03       89.52
+{txt}       1323 {c |}{res}          2        0.03       89.56
+{txt}       1324 {c |}{res}          2        0.03       89.59
+{txt}       1326 {c |}{res}          4        0.06       89.65
+{txt}       1327 {c |}{res}          2        0.03       89.68
+{txt}       1329 {c |}{res}          8        0.13       89.81
+{txt}       1330 {c |}{res}          8        0.13       89.94
+{txt}       1333 {c |}{res}          4        0.06       90.00
+{txt}       1336 {c |}{res}          2        0.03       90.03
+{txt}       1337 {c |}{res}          4        0.06       90.10
+{txt}       1338 {c |}{res}          6        0.10       90.19
+{txt}       1340 {c |}{res}          2        0.03       90.22
+{txt}       1347 {c |}{res}          4        0.06       90.29
+{txt}       1348 {c |}{res}          4        0.06       90.35
+{txt}       1353 {c |}{res}          4        0.06       90.41
+{txt}       1354 {c |}{res}          4        0.06       90.48
+{txt}       1356 {c |}{res}          4        0.06       90.54
+{txt}       1364 {c |}{res}          6        0.10       90.63
+{txt}       1368 {c |}{res}          2        0.03       90.67
+{txt}       1373 {c |}{res}          6        0.10       90.76
+{txt}       1374 {c |}{res}          4        0.06       90.83
+{txt}       1379 {c |}{res}          8        0.13       90.95
+{txt}       1380 {c |}{res}          2        0.03       90.98
+{txt}       1384 {c |}{res}          2        0.03       91.02
+{txt}       1387 {c |}{res}          4        0.06       91.08
+{txt}       1391 {c |}{res}          2        0.03       91.11
+{txt}       1396 {c |}{res}          4        0.06       91.17
+{txt}       1397 {c |}{res}          6        0.10       91.27
+{txt}       1399 {c |}{res}          4        0.06       91.33
+{txt}       1400 {c |}{res}          2        0.03       91.37
+{txt}       1405 {c |}{res}          4        0.06       91.43
+{txt}       1410 {c |}{res}          2        0.03       91.46
+{txt}       1413 {c |}{res}          2        0.03       91.49
+{txt}       1414 {c |}{res}          2        0.03       91.52
+{txt}       1415 {c |}{res}          6        0.10       91.62
+{txt}       1418 {c |}{res}          6        0.10       91.71
+{txt}       1421 {c |}{res}          4        0.06       91.78
+{txt}       1423 {c |}{res}          8        0.13       91.90
+{txt}       1424 {c |}{res}          2        0.03       91.94
+{txt}       1427 {c |}{res}          2        0.03       91.97
+{txt}       1428 {c |}{res}          4        0.06       92.03
+{txt}       1440 {c |}{res}          2        0.03       92.06
+{txt}       1441 {c |}{res}          2        0.03       92.10
+{txt}       1457 {c |}{res}          4        0.06       92.16
+{txt}       1461 {c |}{res}          6        0.10       92.25
+{txt}       1469 {c |}{res}          4        0.06       92.32
+{txt}       1472 {c |}{res}          2        0.03       92.35
+{txt}       1476 {c |}{res}          2        0.03       92.38
+{txt}       1478 {c |}{res}          2        0.03       92.41
+{txt}       1479 {c |}{res}          2        0.03       92.44
+{txt}       1484 {c |}{res}         10        0.16       92.60
+{txt}       1485 {c |}{res}          8        0.13       92.73
+{txt}       1486 {c |}{res}          4        0.06       92.79
+{txt}       1487 {c |}{res}          4        0.06       92.86
+{txt}       1488 {c |}{res}          4        0.06       92.92
+{txt}       1490 {c |}{res}          4        0.06       92.98
+{txt}       1492 {c |}{res}          6        0.10       93.08
+{txt}       1500 {c |}{res}          2        0.03       93.11
+{txt}       1501 {c |}{res}          4        0.06       93.17
+{txt}       1503 {c |}{res}          2        0.03       93.21
+{txt}       1506 {c |}{res}          6        0.10       93.30
+{txt}       1509 {c |}{res}          4        0.06       93.37
+{txt}       1523 {c |}{res}          4        0.06       93.43
+{txt}       1532 {c |}{res}          8        0.13       93.56
+{txt}       1534 {c |}{res}          4        0.06       93.62
+{txt}       1538 {c |}{res}          2        0.03       93.65
+{txt}       1541 {c |}{res}          4        0.06       93.71
+{txt}       1542 {c |}{res}         10        0.16       93.87
+{txt}       1552 {c |}{res}          2        0.03       93.90
+{txt}       1553 {c |}{res}          2        0.03       93.94
+{txt}       1556 {c |}{res}          4        0.06       94.00
+{txt}       1557 {c |}{res}          2        0.03       94.03
+{txt}       1559 {c |}{res}          2        0.03       94.06
+{txt}       1561 {c |}{res}          4        0.06       94.13
+{txt}       1562 {c |}{res}          4        0.06       94.19
+{txt}       1567 {c |}{res}          8        0.13       94.32
+{txt}       1570 {c |}{res}          4        0.06       94.38
+{txt}       1571 {c |}{res}          2        0.03       94.41
+{txt}       1575 {c |}{res}          2        0.03       94.44
+{txt}       1576 {c |}{res}          2        0.03       94.48
+{txt}       1577 {c |}{res}          8        0.13       94.60
+{txt}       1582 {c |}{res}          6        0.10       94.70
+{txt}       1583 {c |}{res}          2        0.03       94.73
+{txt}       1584 {c |}{res}          4        0.06       94.79
+{txt}       1590 {c |}{res}          2        0.03       94.83
+{txt}       1593 {c |}{res}          4        0.06       94.89
+{txt}       1598 {c |}{res}          2        0.03       94.92
+{txt}       1602 {c |}{res}          2        0.03       94.95
+{txt}       1603 {c |}{res}          2        0.03       94.98
+{txt}       1604 {c |}{res}          4        0.06       95.05
+{txt}       1607 {c |}{res}          2        0.03       95.08
+{txt}       1608 {c |}{res}          2        0.03       95.11
+{txt}       1613 {c |}{res}          2        0.03       95.14
+{txt}       1614 {c |}{res}          4        0.06       95.21
+{txt}       1617 {c |}{res}          4        0.06       95.27
+{txt}       1618 {c |}{res}          4        0.06       95.33
+{txt}       1619 {c |}{res}          2        0.03       95.37
+{txt}       1620 {c |}{res}          4        0.06       95.43
+{txt}       1628 {c |}{res}          4        0.06       95.49
+{txt}       1629 {c |}{res}          2        0.03       95.52
+{txt}       1635 {c |}{res}          2        0.03       95.56
+{txt}       1636 {c |}{res}          6        0.10       95.65
+{txt}       1637 {c |}{res}          4        0.06       95.71
+{txt}       1642 {c |}{res}          2        0.03       95.75
+{txt}       1643 {c |}{res}          4        0.06       95.81
+{txt}       1654 {c |}{res}          8        0.13       95.94
+{txt}       1658 {c |}{res}          6        0.10       96.03
+{txt}       1663 {c |}{res}          4        0.06       96.10
+{txt}       1665 {c |}{res}          4        0.06       96.16
+{txt}       1666 {c |}{res}          4        0.06       96.22
+{txt}       1667 {c |}{res}          4        0.06       96.29
+{txt}       1684 {c |}{res}          2        0.03       96.32
+{txt}       1691 {c |}{res}          6        0.10       96.41
+{txt}       1692 {c |}{res}          4        0.06       96.48
+{txt}       1693 {c |}{res}          4        0.06       96.54
+{txt}       1695 {c |}{res}          4        0.06       96.60
+{txt}       1697 {c |}{res}          4        0.06       96.67
+{txt}       1698 {c |}{res}          2        0.03       96.70
+{txt}       1711 {c |}{res}          4        0.06       96.76
+{txt}       1716 {c |}{res}          4        0.06       96.83
+{txt}       1722 {c |}{res}          4        0.06       96.89
+{txt}       1724 {c |}{res}          6        0.10       96.98
+{txt}       1730 {c |}{res}          8        0.13       97.11
+{txt}       1731 {c |}{res}          4        0.06       97.17
+{txt}       1733 {c |}{res}          4        0.06       97.24
+{txt}       1741 {c |}{res}          4        0.06       97.30
+{txt}       1748 {c |}{res}          4        0.06       97.37
+{txt}       1751 {c |}{res}          4        0.06       97.43
+{txt}       1755 {c |}{res}          4        0.06       97.49
+{txt}       1756 {c |}{res}          4        0.06       97.56
+{txt}       1767 {c |}{res}          4        0.06       97.62
+{txt}       1769 {c |}{res}          8        0.13       97.75
+{txt}       1770 {c |}{res}          4        0.06       97.81
+{txt}       1777 {c |}{res}          4        0.06       97.87
+{txt}       1778 {c |}{res}          4        0.06       97.94
+{txt}       1783 {c |}{res}          4        0.06       98.00
+{txt}       1785 {c |}{res}          4        0.06       98.06
+{txt}       1798 {c |}{res}          6        0.10       98.16
+{txt}       1801 {c |}{res}          2        0.03       98.19
+{txt}       1810 {c |}{res}          4        0.06       98.25
+{txt}       1821 {c |}{res}          4        0.06       98.32
+{txt}       1823 {c |}{res}          2        0.03       98.35
+{txt}       1836 {c |}{res}          6        0.10       98.44
+{txt}       1840 {c |}{res}          8        0.13       98.57
+{txt}       1846 {c |}{res}          4        0.06       98.63
+{txt}       1858 {c |}{res}          4        0.06       98.70
+{txt}       1866 {c |}{res}          4        0.06       98.76
+{txt}       1874 {c |}{res}          4        0.06       98.83
+{txt}       1875 {c |}{res}          6        0.10       98.92
+{txt}       1881 {c |}{res}          4        0.06       98.98
+{txt}       1883 {c |}{res}          4        0.06       99.05
+{txt}       1895 {c |}{res}          8        0.13       99.17
+{txt}       1912 {c |}{res}          2        0.03       99.21
+{txt}       1913 {c |}{res}          4        0.06       99.27
+{txt}       1917 {c |}{res}          2        0.03       99.30
+{txt}       1921 {c |}{res}          4        0.06       99.37
+{txt}       1930 {c |}{res}          2        0.03       99.40
+{txt}       1935 {c |}{res}          4        0.06       99.46
+{txt}       1939 {c |}{res}          4        0.06       99.52
+{txt}       1944 {c |}{res}          4        0.06       99.59
+{txt}       1952 {c |}{res}          4        0.06       99.65
+{txt}       1956 {c |}{res}          4        0.06       99.71
+{txt}       1959 {c |}{res}          4        0.06       99.78
+{txt}       1962 {c |}{res}          2        0.03       99.81
+{txt}       1966 {c |}{res}          4        0.06       99.87
+{txt}       1994 {c |}{res}          4        0.06       99.94
+{txt}       1998 {c |}{res}          4        0.06      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      6,300      100.00
+
+{com}. exit, clear

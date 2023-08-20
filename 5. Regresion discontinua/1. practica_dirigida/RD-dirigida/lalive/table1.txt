@@ -1,0 +1,7 @@
+	(1)
+VARIABLES	unemployment_duration
+	
+RD_Estimate	12.71***
+	(3.391)
+	
+Covariates	NO
